@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sender"
+            android:text="Sender Omi"
             android:id="@+id/t1"
             android:layout_margin="4dp"
             android:textSize="@dimen/activity_horizontal_margin"
