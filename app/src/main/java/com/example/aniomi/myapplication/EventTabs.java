@@ -1,7 +1,9 @@
 package com.example.aniomi.myapplication;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,6 +19,7 @@ public class EventTabs extends Fragment {
 
 
     public  static TabLayout tabLayout;
+    private FloatingActionButton fav;
     public  static ViewPager viewPager;
     public  static int int_items= 4;
     public EventTabs() {
@@ -25,13 +28,12 @@ public class EventTabs extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View v=inflater.inflate(R.layout.fragment_event_tabs, container, false);
         tabLayout=(TabLayout)v.findViewById(R.id.tabs);
         viewPager=(ViewPager)v.findViewById(R.id.container);
-        //set an adpater
+        fav = (FloatingActionButton) v.findViewById(R.id.myFAB);
 
         viewPager.setAdapter(new EventTabsAdapter( getChildFragmentManager()));
 
@@ -41,8 +43,23 @@ public class EventTabs extends Fragment {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
-        return v;
 
+        fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventDetails.tName = null;
+                EventDetails.tDate = null;
+                EventDetails.tTime = null;
+                EventDetails.tDescription = null;
+                EventDetails.tEventID = null;
+                EventDetails.tOpenerID = null;
+                EventDetails.tLoc = null;
+                Intent intent = new Intent(getActivity(),CreatEventsActivity.class);
+                intent.putExtra("tag",true);
+                startActivity(intent);
+            }
+        });
+        return v;
     }
 
 }
