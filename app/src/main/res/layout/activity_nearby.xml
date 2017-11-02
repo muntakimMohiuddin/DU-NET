@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffef"
+    tools:context="com.example.aniomi.myapplication.nearby">
+
+    <GridView
+        android:id="@+id/simpleGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical|horizontal"
+        android:horizontalSpacing="0dip"
+        android:verticalSpacing="0dip"
+        android:adjustViewBounds="true"
+        android:numColumns="2"/>
+
+</RelativeLayout>

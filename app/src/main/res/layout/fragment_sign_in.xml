@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aniomi.myapplication.SignIn"
+    android:gravity="center_horizontal|center_vertical"
+    android:layout_margin="10dp"
+    android:background="@drawable/back2"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dU_net"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:id="@+id/t1"
+        android:padding="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_below="@+id/t1"
+        android:id="@+id/e1"
+        android:layout_height="wrap_content"
+        android:hint="Enter User Id..."
+        android:paddingBottom="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_below="@+id/e1"
+        android:id="@+id/e2"
+        android:layout_height="wrap_content"
+        android:hint="Enter Password..."
+        android:paddingBottom="20dp"/>
+    <LinearLayout
+        android:paddingTop="15dp"
+        android:layout_below="@id/e2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:id="@+id/button"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

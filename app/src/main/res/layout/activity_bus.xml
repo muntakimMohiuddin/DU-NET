@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    tools:context="com.example.aniomi.myapplication.activity_bus">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="5dp"
+        android:padding="15dp"
+        android:paddingBottom="45dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/search_rout_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.example.aniomi.myapplication.searchByRout">
+            </fragment>
+
+            <Button
+                android:id="@+id/search_rout_button"
+                android:layout_alignBottom="@+id/search_rout_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:text="SEARCH" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="5dp"
+        android:padding="15dp"
+        android:paddingTop="35dp">
+
+        <LinearLayout
+            android:background="#c0dbcf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/search_bus_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.example.aniomi.myapplication.SearchBus">
+            </fragment>
+
+
+            <Button
+                android:layout_alignBottom="@+id/search_bus_fragment"
+                android:id="@+id/search_bus_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="find this bus"
+                android:layout_gravity="center"/>
+
+
+
+            <TextView
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:id="@+id/bus_info"
+                android:paddingTop="20dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/b_time"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textStyle="normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"/>
+            <Button
+                android:id="@+id/track_button"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="TRACK"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

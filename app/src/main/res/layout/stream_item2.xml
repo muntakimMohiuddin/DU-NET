@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:id="@+id/cv"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/l1"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/l2"
+            android:background="#FFFFEF"
+            >
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sender"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/t1"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_centerVertical="true"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_reply_black_24dp"
+                android:layout_alignParentEnd="true"
+                android:background="#FFFFEF"
+                android:layout_margin="10dp"
+                android:id="@+id/b1"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_details_black_24dp"
+
+                android:background="#FFFFEF"
+                android:layout_margin="10dp"
+                android:id="@+id/b2"
+                android:layout_toLeftOf="@+id/b1"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/l2"
+            android:id="@+id/l3"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="#000000">
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/l3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFEF"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/t3"
+                android:text="Hello World jhiukhiuuub iubiub ibiub hbiubiu iuubiub iubiub "
+                android:ellipsize="end"
+                android:minLines="0"
+                android:lines="5"
+                android:padding="4dp"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/t2"/>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

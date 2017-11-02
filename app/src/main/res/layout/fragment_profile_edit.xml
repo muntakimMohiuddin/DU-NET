@@ -1,0 +1,190 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.aniomi.myapplication.ProfileEdit">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stream5"
+        android:id="@+id/r1"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Your Profile picture"
+            android:textColor="#EEEEEE"
+            android:padding="5dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/r1"
+        android:id="@+id/r2">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="150dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/r2"
+        android:id="@+id/r3"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|center_horizontal">
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose"
+                android:background="@drawable/button3"
+                android:textColor="#EEEEEE"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal">
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload"
+                android:background="@drawable/button3"
+                android:textColor="#EEEEEE"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stream5"
+        android:id="@+id/r4"
+        android:layout_below="@+id/r3"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Your Information"
+            android:textColor="#EEEEEE"
+            android:padding="5dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/r5"
+        android:layout_below="@+id/r4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF">
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Name.."
+            android:id="@+id/et1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="14dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et1"
+
+            >
+            <Button
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Select"
+                android:id="@+id/select"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Reset"
+                android:id="@+id/bc"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Upadte"
+                android:id="@+id/fb"
+                android:layout_toRightOf="@+id/bc"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stream5"
+        android:id="@+id/r6"
+        android:layout_below="@+id/r5"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Your Profile"
+            android:textColor="#EEEEEE"
+            android:padding="5dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+    <EditText
+
+        android:inputType="textMultiLine"
+        android:id="@+id/profileupdate"
+        android:lines="10"
+        android:minLines="10"
+        android:background="@drawable/textinput"
+        android:gravity="top|left"
+        android:maxLines="20"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:hint="Edit Your Profile..."
+        android:layout_below="@+id/r6"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileupdate"
+        android:text="Update Profile"/>
+
+</RelativeLayout>
+</ScrollView>

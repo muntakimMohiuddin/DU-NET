@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "832884327611",
+    "firebase_url": "https://omi44-77bd1.firebaseio.com",
+    "project_id": "omi44-77bd1",
+    "storage_bucket": "omi44-77bd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832884327611:android:8e283a793eeac080",
+        "android_client_info": {
+          "package_name": "com.example.aniomi.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832884327611-tb53dcolpl2mb4pf8qc9kho2tsag9f6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzrUejTJ2W933n5c53qoS11x1qc20bF4k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

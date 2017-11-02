@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aniomi.myapplication.Find"
+
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/upperc">
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter First Portion of Name.."
+            android:id="@+id/et1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="14dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et1"
+
+            >
+            <Button
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Select"
+                android:id="@+id/ba"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Reset"
+                android:id="@+id/bc"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/r1"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

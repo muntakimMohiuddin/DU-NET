@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:id="@+id/cv"
+    android:backgroundTint="@color/cardview_shadow_start_color"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@id/t1"
+            android:text="Sender"
+            android:textAppearance="?android:textAppearanceLarge"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@id/t2"
+            android:text="Message"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_below="@+id/t1"/>
+
+        <EditText
+
+            android:inputType="textMultiLine"
+            android:id="@+id/et1"
+            android:lines="8"
+            android:minLines="4"
+            android:background="@drawable/textinput"
+            android:gravity="top|left"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scrollbars="vertical"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:hint="Edit Your Message..."
+            android:layout_below="@+id/t2"
+        />
+
+
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reply"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/et1">
+
+
+        </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@id/t3"
+            android:text="Message"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:hint="Enter Your Massege"
+            android:layout_below="@+id/b1"
+            />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

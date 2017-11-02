@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aniomi.myapplication.messanger_home">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#4169e1"
+        android:id="@+id/button">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_search_black_24dp"
+            android:id="@+id/a1"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/a1"
+            android:text="Search or find people"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="25dp"
+            android:lines="1"
+            android:ellipsize="end"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_margin="15dp"
+        android:layout_below="@+id/button"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

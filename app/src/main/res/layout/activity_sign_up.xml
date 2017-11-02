@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.asif.myappevent.SignUpActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name...."
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Email..."
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="49dp"
+        android:layout_below="@+id/editText"/>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password...."
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteY="100dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_below="@+id/editText2"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="Sign UP"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="162dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_below="@+id/editText3"/>
+</RelativeLayout>

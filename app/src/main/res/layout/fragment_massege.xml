@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mess"
+    tools:context="com.example.aniomi.myapplication.popupfind">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/t1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Message"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/t1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b4d7e8"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:id="@+id/et5">
+            <EditText
+                android:layout_centerVertical="true"
+                android:inputType="textMultiLine"
+                android:id="@+id/et1"
+                android:lines="8"
+                android:minLines="1"
+                android:background="@drawable/textinput1"
+                android:gravity="top|left"
+                android:maxLines="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:hint="Enter User Name..."
+                android:layout_below="@+id/t2"
+                android:layout_toLeftOf="@+id/idb"
+                />
+
+            <ImageButton
+                android:id="@+id/idb"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_menu_share" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_below="@+id/et5"
+            android:id="@+id/et6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp">
+
+            <EditText
+                android:id="@+id/et2"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t2"
+                android:background="@drawable/textinput1"
+                android:gravity="top|left"
+                android:hint="Edit Your Message..."
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:maxLines="20"
+                android:minLines="8"
+                android:paddingLeft="4dp"
+
+                android:paddingRight="4dp"
+                android:paddingTop="4dp"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_below="@+id/et6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="false"
+                android:background="@drawable/button1"
+                android:text="Send"
+                android:textColor="#FFEEEE"
+
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

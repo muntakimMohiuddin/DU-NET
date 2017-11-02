@@ -1,0 +1,22 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#fff" android:elevation="5dp" android:padding="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:src="@mipmap/ic_picture_as_pdf_black_24dp"
+            android:id="@+id/rrr"
+            android:layout_marginRight="10dp"/>
+        <TextView android:id="@+id/tv_file_name" android:layout_toRightOf="@+id/rrr" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/ic_file_download_black_24dp"/>
+    </RelativeLayout></RelativeLayout>
