@@ -32,7 +32,6 @@
 
     </RelativeLayout>
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/myFAB"
         android:layout_width="50dp"
@@ -53,6 +52,5 @@
         app:fabSize="mini"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="bottom|right" />
-
 
 </android.support.design.widget.CoordinatorLayout>
