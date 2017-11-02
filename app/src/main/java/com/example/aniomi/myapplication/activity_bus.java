@@ -131,6 +131,8 @@ public class activity_bus extends AppCompatActivity {
                     for (DataSnapshot tempDataSnap : dataSnapshot.getChildren()){
                         tmp =  tempDataSnap.getValue().toString() ;
 
+                        //Need to add list
+
                         try{
                             Date timeBus = simpleDateFormat.parse(tmp);
                             Date timeNow = simpleDateFormat.parse(time);
