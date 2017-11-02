@@ -60,7 +60,6 @@ public class EventAdapter_Invitations extends RecyclerView.Adapter<EventAdapter_
             checkBox1 =(CheckBox) itemView.findViewById(R.id.checkBox2); // NOT GOING
             checkBox2 = (CheckBox) itemView.findViewById(R.id.checkBox3); // MAYBE
             checkBox3 = (CheckBox) itemView.findViewById(R.id.checkBox4); // GOING
-            //  rB = itemView.findViewById(R.id.radioGroup);
             add = itemView.findViewById(R.id.addPerson);
             edit = itemView.findViewById(R.id.edit);
             arrow = itemView.findViewById(R.id.arrow);

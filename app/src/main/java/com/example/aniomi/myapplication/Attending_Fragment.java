@@ -60,7 +60,7 @@ public class Attending_Fragment extends Fragment {
         Calendar c = Calendar.getInstance();
         final int mYear = c.get(Calendar.YEAR); // current year
         final int mMonth = c.get(Calendar.MONTH); // current month
-        final int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+        final int mDay = c.get(Calendar.DAY_OF_MONTH); 
 
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
