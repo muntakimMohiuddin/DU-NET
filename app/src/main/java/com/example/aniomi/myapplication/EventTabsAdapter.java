@@ -42,13 +42,13 @@ public class EventTabsAdapter  extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Attending";
+                return "GOING";
             case 1:
-                return "Iterested";
+                return "MAYBE";
             case 2:
-                return "Not Interested";
+                return "NOT GOING";
             case 3:
-                return "Invitation";
+                return "INVITATION";
 
         }
 
