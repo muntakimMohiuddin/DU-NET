@@ -117,8 +117,13 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_manage) {
-            Intent intent = new Intent(MainActivity.this,EventPageMain.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(MainActivity.this,EventPageMain.class);
+            startActivity(intent);*/
+
+            EventTabs fragment=new EventTabs();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_ebook) {
             PdfArchive.department=Students.current.dept;
