@@ -63,6 +63,7 @@ public class EventAdapter_Not_Interested extends RecyclerView.Adapter<EventAdapt
             add = itemView.findViewById(R.id.addPerson);
             edit = itemView.findViewById(R.id.edit);
             arrow = itemView.findViewById(R.id.arrow);
+            checkBox1.setChecked(true);
         }
     }
 
