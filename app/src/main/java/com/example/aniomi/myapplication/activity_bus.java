@@ -1,15 +1,10 @@
 package com.example.aniomi.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.content.Intent;
-import java.text.SimpleDateFormat;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.StaticLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,10 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 public class activity_bus extends AppCompatActivity {
 
         static routTime selection;
@@ -33,7 +27,6 @@ public class activity_bus extends AppCompatActivity {
         Button searchRoute,searchBus,trackBus;
         TextView infoT,timeT;
         DatabaseReference db;
-
 
         String time,selectedBus;
         static String selectedTime;
