@@ -30,7 +30,7 @@ public class EventTabs extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_event_tabs, container, false);
         tabLayout=(TabLayout)v.findViewById(R.id.tabs);
-        viewPager=(ViewPager)v.findViewById(R.id.viewpager);
+        viewPager=(ViewPager)v.findViewById(R.id.container);
         //set an adpater
 
         viewPager.setAdapter(new EventTabsAdapter( getChildFragmentManager()));
