@@ -124,7 +124,7 @@ public class activity_bus extends AppCompatActivity {
                     for (DataSnapshot tempDataSnap : dataSnapshot.getChildren()){
                         tmp =  tempDataSnap.getValue().toString() ;
 
-                        //Need to add list
+                        //Need to add list , ok then do it
 
                         try{
                             Date timeBus = simpleDateFormat.parse(tmp);
