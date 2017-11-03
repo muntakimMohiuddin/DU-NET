@@ -174,11 +174,8 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_sign_out) {
-            logIn_Fragment fragment=new logIn_Fragment();
-            FirebaseAuth.getInstance().signOut();
-            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame,fragment);
-            fragmentTransaction.commit();
+            Intent my=new Intent(this,OpeningActivity.class);
+            startActivity(my);
 
         }
 
