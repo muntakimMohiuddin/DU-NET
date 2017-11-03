@@ -37,7 +37,19 @@ public class post_details extends AppCompatActivity {
     private EditText et1;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private int toshow;
     private List<comment> list=new ArrayList<>();
+    void filter()
+    {
+        List<comment> temp=new ArrayList<>();
+        for(int i=0;i<toshow;i++)
+        {
+            temp.add(list.get(i));
+        }
+        adapter=new postdetailsadapter(temp,getApplicationContext());
+
+        recyclerView.setAdapter(adapter);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +95,7 @@ public class post_details extends AppCompatActivity {
 
                         recyclerView.setAdapter(adapter);
                     }
+
                     }
             }
 
