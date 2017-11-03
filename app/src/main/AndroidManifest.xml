@@ -30,10 +30,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.aniomi.myapplication.MainActivity" />
         </activity>
-        <activity android:name=".OpeningActivity">
+        <activity android:name=".OpeningActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -80,7 +80,8 @@
         <activity android:name=".ShowRoute" />
         <activity android:name=".post_details" />
         <activity android:name=".nearby" />
-        <activity android:name=".PdfArchive"></activity>
+        <activity android:name=".PdfArchive" />
+        <activity android:name=".Event_Search"></activity>
     </application>
 
 </manifest>

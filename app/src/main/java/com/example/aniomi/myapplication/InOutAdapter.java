@@ -19,9 +19,9 @@ public class InOutAdapter extends  FragmentPagerAdapter{
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new SignIn();
+                return new logIn_Fragment();
             case 1:
-                return new SignOut();
+                return new signUP_fragment();
 
 
         }
