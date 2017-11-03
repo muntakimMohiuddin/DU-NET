@@ -1,13 +1,22 @@
 package com.example.aniomi.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +29,7 @@ public class Group_details implements Serializable{
     public  String name , about ,operner,adminPass ,userPass , groupID;
     public  static String tname , tabout ,toperner,tadminPass ,tuserPass , tgroupID;
     private static Context context;
+    public static Uri tfilePath;
     public static List<Group_details> staticList;
 
     Group_details(String name , String about , String  operner ,String adminPass ,String userPass,String groupID)
@@ -40,6 +50,45 @@ public class Group_details implements Serializable{
     static void Creat_Group(Context cont)
     {
         context = cont;
+        if (tfilePath != null) {
+            //displaying a progress dialog while upload is going on
+            final ProgressDialog progressDialog = new ProgressDialog(context);
+            progressDialog.setTitle("Uploading");
+            progressDialog.show();
+            //taken++;
+            StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
+            StorageReference riversRef = storageReference.child("GROUPimages/"+tgroupID+".jpg");
+            riversRef.putFile(tfilePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            //if the upload is successfull
+                            //hiding the progress dialog
+                            progressDialog.dismiss();
+
+                            //and displaying a success toast
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            progressDialog.dismiss();
+
+
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //calculating progress percentage
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                            //displaying percentage in progress dialog
+                            progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                        }
+                    });
+        }
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("Are You Sure ?");
         builder1.setCancelable(true);
