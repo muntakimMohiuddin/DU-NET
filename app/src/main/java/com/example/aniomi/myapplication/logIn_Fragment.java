@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,12 +49,12 @@ public class logIn_Fragment extends Fragment {
         _loginButton = v.findViewById(R.id.btn_login);
         _signupLink = v.findViewById(R.id.link_signup);
 
-        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
             Intent intent = new Intent(getActivity(),MainActivity.class);
             startActivity(intent);
-        }*/
+        }
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
