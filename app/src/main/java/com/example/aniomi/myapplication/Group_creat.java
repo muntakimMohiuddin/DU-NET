@@ -17,7 +17,7 @@ public class Group_creat extends Fragment {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.attending_fragment,container,false);
+        View view = inflater.inflate(R.layout.fragment_group_creat,container,false);
 
         name = view.findViewById(R.id.group_name);
         about = view.findViewById(R.id.about);

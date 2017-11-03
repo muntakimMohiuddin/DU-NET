@@ -178,7 +178,6 @@ public class MainActivity extends AppCompatActivity
             FirebaseAuth.getInstance().signOut();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
-
             fragmentTransaction.commit();
 
         }
