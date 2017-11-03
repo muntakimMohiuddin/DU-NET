@@ -25,5 +25,7 @@
 
     <style name="NewTheme" parent="AppTheme.CustomThem" />
 
+    <style name="AppTheme_Dark_Dialog"></style>
+
 
 </resources>
