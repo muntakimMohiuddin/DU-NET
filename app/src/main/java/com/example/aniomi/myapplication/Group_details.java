@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by asif on 11/3/17.
@@ -19,6 +20,7 @@ public class Group_details implements Serializable{
     public  String name , about ,operner,adminPass ,userPass , groupID;
     public  static String tname , tabout ,toperner,tadminPass ,tuserPass , tgroupID;
     private static Context context;
+    public static List<Group_details> staticList;
 
     Group_details(String name , String about , String  operner ,String adminPass ,String userPass,String groupID)
     {
@@ -30,6 +32,10 @@ public class Group_details implements Serializable{
         this.groupID = groupID;
     }
 
+    Group_details()
+    {
+        name = about = operner= adminPass = userPass = groupID = "ASIF";
+    }
     static void Creat_Group(Context cont)
     {
         context = cont;

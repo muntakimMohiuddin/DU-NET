@@ -3,9 +3,6 @@ package com.example.aniomi.myapplication;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.View;
-
-import static com.example.aniomi.myapplication.GroupTab.int_items;
 
 /**
  * Created by asif on 11/3/17.
@@ -13,7 +10,7 @@ import static com.example.aniomi.myapplication.GroupTab.int_items;
 
 public class GrouptabAdapter extends FragmentPagerAdapter {
 
-    public GrouptabAdapter(FragmentManager fm) {
+    public GrouptabAdapter(FragmentManager fm)   {
         super(fm);
     }
 
@@ -23,7 +20,7 @@ public class GrouptabAdapter extends FragmentPagerAdapter {
             case 0:
                 return new GroupList_fragment();
             case 1:
-                return new Group_Invitation();
+                return new Group_Search();
 
 
         }
@@ -32,12 +29,7 @@ public class GrouptabAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return int_items;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return false;
+        return GroupTab.int_items;
     }
 
     public CharSequence getPageTitle(int position) {
@@ -45,7 +37,7 @@ public class GrouptabAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Group";
             case 1:
-                return "INVITATION";
+                return "Search";
 
         }
 
