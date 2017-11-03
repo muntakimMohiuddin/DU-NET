@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Group_creat extends Fragment {
 
     private EditText name , about ,adminPass,userPass;
@@ -26,6 +29,10 @@ public class Group_creat extends Fragment {
         photo = view.findViewById(R.id.group_pic);
         adminPass = view.findViewById(R.id.adminPass);
         userPass = view.findViewById(R.id.userPass);
+
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Groups");
+        Group_details.tgroupID = mDatabase.push().getKey();
 
         name.addTextChangedListener(new TextWatcher() {
             @Override

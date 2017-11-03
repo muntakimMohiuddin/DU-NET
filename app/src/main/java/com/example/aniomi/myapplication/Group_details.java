@@ -36,6 +36,7 @@ public class Group_details implements Serializable{
     {
         name = about = operner= adminPass = userPass = groupID = "ASIF";
     }
+
     static void Creat_Group(Context cont)
     {
         context = cont;
@@ -49,7 +50,6 @@ public class Group_details implements Serializable{
                         FirebaseAuth mAuth;
                         DatabaseReference mDatabase;
                         mDatabase = FirebaseDatabase.getInstance().getReference().child("Groups");
-                        tgroupID = mDatabase.push().getKey();
                         final String openerID = Students.current.getUid();
                         Group_details group_details = new Group_details(tname,tabout,openerID,tadminPass,tuserPass,tgroupID);
                         mDatabase.child(tgroupID).setValue(group_details);
