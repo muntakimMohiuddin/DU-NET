@@ -1,15 +1,11 @@
 package com.example.aniomi.myapplication;
 
 
-import android.app.FragmentTransaction;
-import android.app.Fragment;
-import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,18 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView =null;
     Toolbar toolbar=null;
+    int it = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,20 +67,27 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        if(it == 0)
+        {
+            getMenuInflater().inflate(R.menu.main, menu);
+            return true;
+        }
+        else
+        {
+            getMenuInflater().inflate(R.menu.menu_event_page_main, menu);
+            return true;
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Toast.makeText(getApplicationContext(), "DONE", Toast.LENGTH_SHORT).show();
+        }
+        else if(id == R.id.Search) {
+            Event_Search event_search = new Event_Search(MainActivity.this);
         }
 
         return super.onOptionsItemSelected(item);
@@ -117,13 +116,12 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_manage) {
-            /*Intent intent = new Intent(MainActivity.this,EventPageMain.class);
-            startActivity(intent);*/
-
             EventTabs fragment=new EventTabs();
+            it = 1;
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
 
         } else if (id == R.id.nav_ebook) {
             PdfArchive.department=Students.current.dept;
@@ -131,9 +129,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_nearby) {
-            Intent intent = new Intent(MainActivity.this,nearby.class);
-            startActivity(intent);
-
+            /*Intent intent = new Intent(MainActivity.this,nearby.class);
+            startActivity(intent);*/
+            nearby fragment = new nearby();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();
         }
 
         else if (id == R.id.nav_share) {

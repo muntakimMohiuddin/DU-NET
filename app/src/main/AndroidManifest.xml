@@ -80,7 +80,8 @@
         <activity android:name=".ShowRoute" />
         <activity android:name=".post_details" />
         <activity android:name=".nearby" />
-        <activity android:name=".PdfArchive"></activity>
+        <activity android:name=".PdfArchive" />
+        <activity android:name=".Event_Search"></activity>
     </application>
 
 </manifest>

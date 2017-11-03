@@ -1,41 +1,43 @@
 package com.example.aniomi.myapplication;
 
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import android.Manifest;
-        import android.content.pm.PackageManager;
-        import android.location.Location;
-        import android.location.LocationListener;
-        import android.location.LocationManager;
-        import android.os.Bundle;
-        import android.support.annotation.NonNull;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.ActivityCompat;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Log;
-        import android.widget.Button;
-        import android.widget.GridView;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-        import com.google.android.gms.common.ConnectionResult;
-        import com.google.android.gms.common.api.GoogleApiClient;
-        import com.google.android.gms.location.LocationRequest;
-        import com.google.android.gms.location.LocationServices;
-        import com.google.android.gms.maps.GoogleMap;
-        import com.google.android.gms.maps.SupportMapFragment;
-        import com.google.android.gms.maps.model.LatLng;
-        import com.google.android.gms.maps.model.Marker;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.database.ChildEventListener;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
+import java.util.ArrayList;
 
-        import java.util.ArrayList;
-
-public class nearby extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+public class nearby extends Fragment implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,LocationListener{
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
@@ -61,19 +63,24 @@ public class nearby extends AppCompatActivity implements GoogleApiClient.Connect
     SupportMapFragment mFragment;
     Marker mCurrLocation;
 
+    public nearby(){
+        //
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nearby);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplicationContext(), "Location Not Granted", Toast.LENGTH_SHORT).show();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v=inflater.inflate(R.layout.activity_nearby, container, false);
+        simpleList = (GridView) v.findViewById(R.id.simpleGridView);
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getContext(), "Location Not Granted", Toast.LENGTH_SHORT).show();
         }
         buildGoogleApiClient();
-
+        return v;
     }
 
     synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
@@ -81,8 +88,6 @@ public class nearby extends AppCompatActivity implements GoogleApiClient.Connect
     }
 
     void keepLocationUpdated(){
-        Toast.makeText(getApplicationContext(),lat+","+lng, Toast.LENGTH_SHORT).show();
-        simpleList = (GridView) findViewById(R.id.simpleGridView);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
         final String userID = Students.current.getUid();
@@ -110,7 +115,7 @@ public class nearby extends AppCompatActivity implements GoogleApiClient.Connect
                 {
                     studentList.add(temp);
                 }
-                nearbyAdapter myAdapter=new nearbyAdapter(nearby.this,R.layout.activity_gridview,studentList);
+                nearbyAdapter myAdapter=new nearbyAdapter(getContext(),R.layout.activity_gridview,studentList);
                 simpleList.setAdapter(myAdapter);
             }
 
@@ -201,14 +206,14 @@ public class nearby extends AppCompatActivity implements GoogleApiClient.Connect
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
     }
 
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mGoogleApiClient.disconnect();
     }
