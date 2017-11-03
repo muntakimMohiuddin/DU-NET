@@ -19,9 +19,13 @@ public class EventTabsAdapter  extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new GroupList_fragment();
+                return new Attending_Fragment();
             case 1:
-                return new Group_Invitation();
+                return new Interested_Fragment();
+            case 2:
+                return new Not_Intersted_Fragment();
+            case 3:
+                return new Invitation_Fragment();
 
         }
         return null;

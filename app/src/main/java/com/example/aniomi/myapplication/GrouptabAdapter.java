@@ -21,13 +21,9 @@ public class GrouptabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Attending_Fragment();
+                return new GroupList_fragment();
             case 1:
-                return new Interested_Fragment();
-            case 2:
-                return  new Not_Intersted_Fragment();
-            case 3:
-                return new Invitation_Fragment();
+                return new Group_Invitation();
 
 
         }
