@@ -36,7 +36,7 @@ public class Massege extends Fragment {
     HashMap<String,String> mp=new HashMap<String, String>();
     private EditText et1,et2;
     ArrayList<String> names=new ArrayList<>();
-    private Button b1;ImageButton idb;
+    ImageButton idb,b1;
     public Massege() {
         // Required empty public constructor
     }
@@ -75,7 +75,7 @@ public class Massege extends Fragment {
 
             }
         });
-        b1=view.findViewById(R.id.b1);
+        b1=view.findViewById(R.id.sendb);
         et1=view.findViewById(R.id.et1);
         et2=view.findViewById(R.id.et2);
         idb=view.findViewById(R.id.idb);

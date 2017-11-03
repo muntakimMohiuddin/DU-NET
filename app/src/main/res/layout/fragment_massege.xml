@@ -9,7 +9,8 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="#ffeefe"
-    tools:context="com.example.aniomi.myapplication.popupfind">
+    tools:context="com.example.aniomi.myapplication.popupfind"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -31,7 +32,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="14dp"
+            android:layout_margin="20dp"
             android:id="@+id/et5">
             <EditText
                 android:layout_centerVertical="true"
@@ -45,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:padding="5dp"
-                android:hint="Enter User Name..."
+                android:hint="Type here.."
                 android:layout_below="@+id/t2"
                 android:layout_toLeftOf="@+id/idb"
                 />
@@ -55,8 +56,16 @@
                 android:background="#dddddd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/sendb"
+                android:src="@drawable/ic_search_black_36dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_send_black_36dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_search_black_36dp" />
+                android:id="@+id/sendb"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_below="@+id/et5"
@@ -84,23 +93,6 @@
                 android:paddingTop="4dp"
                 android:scrollbars="vertical" />
         </LinearLayout>
-        <RelativeLayout
-            android:layout_below="@+id/et6"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center_horizontal">
-
-            <Button
-                android:id="@+id/b1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="false"
-                android:background="@drawable/button1"
-                android:text="Send"
-                android:textColor="#FFEEEE"
-
-                android:textStyle="bold" />
-        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>
 </ScrollView>
