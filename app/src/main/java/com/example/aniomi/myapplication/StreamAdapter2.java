@@ -104,10 +104,10 @@ public class StreamAdapter2  extends RecyclerView.Adapter<StreamAdapter2.sViewHo
                 //view.getContext().startActivity(new Intent(view.getContext(),popupfind.class));
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
                 final View mView=LayoutInflater.from(context).inflate(R.layout.activity_popupfind,null);
-                final EditText etm=(EditText) mView.findViewById(R.id.et1);
+
                 String t=holder.t1.getText().toString();
 
-                etm.setText(t);
+
                 final EditText ett=(EditText) mView.findViewById(R.id.et2);
                 Button send=(Button) mView.findViewById(R.id.b9);
                 final String uid=holder.t2.getText().toString();

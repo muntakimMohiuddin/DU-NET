@@ -124,10 +124,10 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
                 //view.getContext().startActivity(new Intent(view.getContext(),popupfind.class));
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
                 final View mView=LayoutInflater.from(context).inflate(R.layout.activity_popupfind,null);
-                final EditText etm=(EditText) mView.findViewById(R.id.et1);
+
                 String t=holder.text1.getText().toString();
                 t=t.replace("User Name : ","");
-                etm.setText(t);
+
                 final EditText ett=(EditText) mView.findViewById(R.id.et2);
                 Button send=(Button) mView.findViewById(R.id.b9);
                 final String uid=holder.text4.getText().toString();

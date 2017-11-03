@@ -8,15 +8,15 @@
     tools:context="com.example.aniomi.myapplication.popupfind">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="120dp"
         android:id="@+id/t1">
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Message"
+
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="20dp"
-            android:textColor="#FFFFFF"/>
+            android:src="@drawable/mailmessagesendicon"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:layout_below="@+id/t1"
@@ -27,30 +27,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="14dp"
-        android:id="@+id/et5">
-    <EditText
-
-        android:inputType="textMultiLine"
-        android:id="@+id/et1"
-        android:lines="8"
-        android:minLines="1"
-        android:background="@drawable/textinput1"
-        android:gravity="top|left"
-        android:maxLines="1"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:hint="Enter User Name..."
-        android:layout_below="@+id/t2"
-        />
-    </LinearLayout>
-    <LinearLayout
         android:layout_below="@+id/et5"
         android:id="@+id/et6"
         android:layout_width="match_parent"
@@ -59,8 +35,8 @@
         <EditText
             android:inputType="textMultiLine"
             android:id="@+id/et2"
-            android:lines="6"
-            android:minLines="6"
+            android:lines="20"
+            android:minLines="10"
             android:background="@drawable/textinput1"
             android:gravity="top|left"
             android:maxLines="20"
