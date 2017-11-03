@@ -3,15 +3,17 @@ package com.example.aniomi.myapplication;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
 
-import static com.example.aniomi.myapplication.EventTabs.int_items;
+import static com.example.aniomi.myapplication.GroupTab.int_items;
 
 /**
- * Created by aniomi on 11/3/17.
+ * Created by asif on 11/3/17.
  */
 
-public class EventTabsAdapter  extends FragmentPagerAdapter {
-    public EventTabsAdapter(FragmentManager fm) {
+public class GrouptabAdapter extends FragmentPagerAdapter {
+
+    public GrouptabAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -19,9 +21,14 @@ public class EventTabsAdapter  extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new GroupList_fragment();
+                return new Attending_Fragment();
             case 1:
-                return new Group_Invitation();
+                return new Interested_Fragment();
+            case 2:
+                return  new Not_Intersted_Fragment();
+            case 3:
+                return new Invitation_Fragment();
+
 
         }
         return null;
@@ -29,20 +36,19 @@ public class EventTabsAdapter  extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-
-
         return int_items;
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return false;
     }
 
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "GOING";
+                return "Group";
             case 1:
-                return "MAYBE";
-            case 2:
-                return "NOT GOING";
-            case 3:
                 return "INVITATION";
 
         }

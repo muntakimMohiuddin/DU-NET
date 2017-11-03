@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.aniomi.myapplication.EventPageMain">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:background="#00ff00"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:layout_behavior=""
+            android:layout_below="@+id/tabs" />
+
+    </RelativeLayout>
+
+    <!--<android.support.design.widget.FloatingActionButton
+        android:id="@+id/myFAB"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/recycler"
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="top|left"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="132dp"
+        android:onClick="addNewNoteFunction"
+        android:src="@mipmap/ic_add_white_24dp"
+        app:backgroundTint="@color/colorAccent"
+        app:borderWidth="0dp"
+        app:elevation="5dp"
+        app:fabSize="mini"
+        app:layout_anchor="@+id/container"
+        app:layout_anchorGravity="bottom|right" />-->
+
+</android.support.design.widget.CoordinatorLayout>

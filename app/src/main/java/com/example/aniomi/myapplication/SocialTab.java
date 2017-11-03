@@ -1,7 +1,5 @@
 package com.example.aniomi.myapplication;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,17 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SocialTab.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SocialTab#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SocialTab extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     public  static TabLayout tabLayout;
     public  static ViewPager viewPager;

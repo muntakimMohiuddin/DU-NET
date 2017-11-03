@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.asif.myappevent.CreatEventsActivity">
+
+    <item android:id="@+id/action_group_creat_done"
+        android:title="DONE"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>

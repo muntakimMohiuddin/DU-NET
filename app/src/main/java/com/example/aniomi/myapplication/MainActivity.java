@@ -72,11 +72,22 @@ public class MainActivity extends AppCompatActivity
             getMenuInflater().inflate(R.menu.main, menu);
             return true;
         }
-        else
+        else if(it==1)
         {
             getMenuInflater().inflate(R.menu.menu_event_page_main, menu);
             return true;
         }
+        else if(it == 2)
+        {
+            getMenuInflater().inflate(R.menu.menu_creat_group, menu);
+            return true;
+        }
+        else if(it == 3)
+        {
+            getMenuInflater().inflate(R.menu.group_creat_done, menu);
+            return true;
+        }
+        return true;
     }
 
     @Override
@@ -89,7 +100,15 @@ public class MainActivity extends AppCompatActivity
         else if(id == R.id.Search) {
             Event_Search event_search = new Event_Search(MainActivity.this);
         }
-
+        else if(id == R.id.creat_group)
+        {
+            it = 3;
+            Group_creat fragment = new Group_creat();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();
+            invalidateOptionsMenu();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -150,6 +169,16 @@ public class MainActivity extends AppCompatActivity
             Intent my=new Intent(this,post.class);
             startActivity(my);
 
+        }
+
+        else if(id == R.id.nav_group)
+        {
+            it = 2;
+            GroupTab fragment = new GroupTab();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();
+            invalidateOptionsMenu();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
