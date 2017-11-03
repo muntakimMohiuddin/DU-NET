@@ -112,6 +112,10 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             invalidateOptionsMenu();
         }
+        else if(id == R.id.action_group_creat_done)
+        {
+            Group_details.Creat_Group(MainActivity.this);
+        }
         return super.onOptionsItemSelected(item);
     }
 
