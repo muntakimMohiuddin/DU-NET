@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView =null;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PdfArchive.department=Students.current.getDept();
         MainFragment fragment=new MainFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
@@ -168,6 +171,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent my=new Intent(this,post.class);
             startActivity(my);
+
+        }
+        else if (id == R.id.nav_sign_out) {
+            logIn_Fragment fragment=new logIn_Fragment();
+            FirebaseAuth.getInstance().signOut();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+
+            fragmentTransaction.commit();
 
         }
 

@@ -20,6 +20,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class logIn_Fragment extends Fragment {
 
@@ -43,12 +49,31 @@ public class logIn_Fragment extends Fragment {
         _loginButton = v.findViewById(R.id.btn_login);
         _signupLink = v.findViewById(R.id.link_signup);
 
-        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
+            DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Users");
+            databaseUsers.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot users : dataSnapshot.getChildren())
+                    {
+                        Students temp=users.getValue(Students.class);
+
+                        if(temp.getMail().equals(user.getEmail())) {Students.current=temp;break;}
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             Intent intent = new Intent(getActivity(),MainActivity.class);
             startActivity(intent);
-        }*/
+        }
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -84,7 +109,7 @@ public class logIn_Fragment extends Fragment {
 
        // _loginButton.setEnabled(false);
 
-        String email = _emailText.getText().toString().trim();
+        final String email = _emailText.getText().toString().trim();
         String password = _passwordText.getText().toString().trim();
 
         // TODO: Implement your own authentication logic here.
@@ -97,6 +122,25 @@ public class logIn_Fragment extends Fragment {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
+                        DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Users");
+                        databaseUsers.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                for(DataSnapshot users : dataSnapshot.getChildren())
+                                {
+                                    Students temp=users.getValue(Students.class);
+
+                                    if(temp.getMail().equals(email)) {Students.current=temp;break;}
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                     } else {
