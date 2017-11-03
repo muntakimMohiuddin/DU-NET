@@ -290,6 +290,7 @@ public class post extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            ///jkjlop
         }
         if(requestCode == request_Code && resultCode == RESULT_OK)
         {
