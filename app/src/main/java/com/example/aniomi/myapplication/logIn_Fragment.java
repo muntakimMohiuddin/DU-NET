@@ -49,9 +49,28 @@ public class logIn_Fragment extends Fragment {
         _loginButton = v.findViewById(R.id.btn_login);
         _signupLink = v.findViewById(R.id.link_signup);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
+            DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Users");
+            databaseUsers.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot users : dataSnapshot.getChildren())
+                    {
+                        Students temp=users.getValue(Students.class);
+
+                        if(temp.getMail().equals(user.getEmail())) {Students.current=temp;break;}
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             Intent intent = new Intent(getActivity(),MainActivity.class);
             startActivity(intent);
         }
