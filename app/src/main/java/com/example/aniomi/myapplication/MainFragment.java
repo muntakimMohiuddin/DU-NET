@@ -39,7 +39,6 @@ public class MainFragment extends Fragment {
     String current="Any";
     Context cn;
     public MainFragment() {
-        // Required empty public constructor
         current="Any";
     }
 
@@ -79,19 +78,6 @@ public class MainFragment extends Fragment {
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                /*for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    ////
-                    posto temp=new posto();
-                    temp=users.getValue(posto.class);
-                    list.add(temp);
-
-
-                }
-                Collections.reverse(list);
-                filter();*/
                 Collections.reverse(list);
                 filter();
             }
@@ -105,8 +91,6 @@ public class MainFragment extends Fragment {
         deptdialog.bindOnSpinerListener(new OnSpinerItemClick() {
             @Override
             public void onClick(String item, int position) {
-                //Toast.makeText(getActivity(), item + "  " + position+"", Toast.LENGTH_SHORT).show();
-                //cs.setText(item);
                 current=item;
                 filter();
 
