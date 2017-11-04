@@ -71,17 +71,7 @@ public class postdetailsadapter extends RecyclerView.Adapter<postdetailsadapter.
         comment temp=list.get(position);
         holder.t1.setText(temp.name);
         holder.t2.setText(temp.getDescription());
-        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-        StorageReference forestRef;
-
-        storageRef = FirebaseStorage.getInstance().getReference();
-        forestRef = storageRef.child("images/"+temp.sender+".jpg");
-        Glide.with(context).using(new FirebaseImageLoader())
-                .load(forestRef)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transform(new CircleTransform(context))
-                .into(holder.imageView);
-
+        MainActivity.setImageFromStorage(context,"images/"+temp.sender+".jpg",holder.imageView);
     }
 
     @Override

@@ -75,15 +75,7 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
             B.setVisibility(View.GONE);
             B=itemView.findViewById(R.id.t7);
             B.setVisibility(View.GONE);
-            /*text4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    Massege myFragment = new Massege();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, myFragment).addToBackStack(null).commit();
 
-                }
-            });*/
 
             cv=(CardView) itemView.findViewById(R.id.cv);
         }
@@ -107,21 +99,10 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
         holder.text4.setText(temp.getUid());
         holder.text5.setText(temp.getBlood());
         holder.text6.setText(temp.getLoc());
-        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-        StorageReference forestRef;
-
-        storageRef = FirebaseStorage.getInstance().getReference();
-        forestRef = storageRef.child("images/"+holder.text4.getText().toString()+".jpg");
-        Glide.with(context).using(new FirebaseImageLoader())
-                .load(forestRef)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transform(new CircleTransform(context))
-                .into(holder.profile);
+        MainActivity.setImageFromStorage(context,"images/"+holder.text4.getText().toString()+".jpg",holder.profile);
         holder.rlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //popupfind.send=holder.text4.getText().toString();
-                //view.getContext().startActivity(new Intent(view.getContext(),popupfind.class));
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
                 final View mView=LayoutInflater.from(context).inflate(R.layout.activity_popupfind,null);
 
@@ -155,16 +136,7 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
                 final View mView=LayoutInflater.from(context).inflate(R.layout.fragment_profile_my,null);
                 final ImageView imageView=(ImageView) mView.findViewById(R.id.imageView);
-                StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-                StorageReference forestRef;
-
-                storageRef = FirebaseStorage.getInstance().getReference();
-                forestRef = storageRef.child("images/"+holder.text4.getText().toString()+".jpg");
-                Glide.with(context).using(new FirebaseImageLoader())
-                        .load(forestRef)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .transform(new CircleTransform(context))
-                        .into(imageView);
+                MainActivity.setImageFromStorage(context,"images/"+holder.text4.getText().toString()+".jpg",imageView);
                 TextView t1,t2,t3,t4,t5;
                 t1=mView.findViewById(R.id.t1);
                 t2=mView.findViewById(R.id.t2);

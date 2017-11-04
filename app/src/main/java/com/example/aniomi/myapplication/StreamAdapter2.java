@@ -57,16 +57,6 @@ public class StreamAdapter2  extends RecyclerView.Adapter<StreamAdapter2.sViewHo
             imageView=itemView.findViewById(R.id.imageView);
             View B=itemView.findViewById(R.id.t2);
             B.setVisibility(View.GONE);
-            /*text4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    Massege myFragment = new Massege();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, myFragment).addToBackStack(null).commit();
-
-                }
-            });*/
-
             cv=(CardView) itemView.findViewById(R.id.cv);
         }
 
@@ -86,22 +76,10 @@ public class StreamAdapter2  extends RecyclerView.Adapter<StreamAdapter2.sViewHo
         holder.t1.setText(temp.getName());
         holder.t2.setText(temp.getSen());
         holder.t3.setText(temp.getMai());
-        //holder.text4.setText("Send");
-        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-        StorageReference forestRef;
-
-        storageRef = FirebaseStorage.getInstance().getReference();
-        forestRef = storageRef.child("images/"+holder.t2.getText().toString()+".jpg");
-        Glide.with(context).using(new FirebaseImageLoader())
-                .load(forestRef)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transform(new CircleTransform(context))
-                .into(holder.imageView);
+       MainActivity.setImageFromStorage(context,"images/"+holder.t2.getText().toString()+".jpg",holder.imageView);
         holder.b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //popupfind.send=holder.text4.getText().toString();
-                //view.getContext().startActivity(new Intent(view.getContext(),popupfind.class));
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
                 final View mView=LayoutInflater.from(context).inflate(R.layout.activity_popupfind,null);
 

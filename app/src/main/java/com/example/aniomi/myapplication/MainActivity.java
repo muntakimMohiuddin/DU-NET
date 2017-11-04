@@ -1,6 +1,7 @@
 package com.example.aniomi.myapplication;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BaseTransientBottomBar;
@@ -25,14 +26,51 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView =null;
     Toolbar toolbar=null;
     int it = 0;
+    static void setImageFromStorage(Context context,String uri,ImageView imageView)
+    {
+        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
+        StorageReference forestRef;
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+
+        forestRef = storageRef.child(uri);
+        Glide.with(context).using(new FirebaseImageLoader())
+                .load(forestRef)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transform(new CircleTransform(context))
+                .into(imageView);
+    }
+    static void setImageFromStorageNonCircle(Context context,String uri,ImageView imageView)
+    {
+        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
+        StorageReference forestRef;
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+
+        forestRef = storageRef.child(uri);
+        Glide.with(context).using(new FirebaseImageLoader())
+                .load(forestRef)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
+    }
+    static <Type> ArrayList<Type> createListFromFirebase(Type obj,DatabaseReference firebaseReference) throws ClassNotFoundException {
+        //Class cl=Class.forName(className);
+        obj.getClass();
+        ArrayList<Type> list=new ArrayList<>();
+        return list;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +109,7 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView=v.findViewById(R.id.imageView);
         TextView gmail=v.findViewById(R.id.textView);
         gmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
+        /*StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
         StorageReference forestRef;
 
         storageRef = FirebaseStorage.getInstance().getReference();
@@ -81,7 +119,8 @@ public class MainActivity extends AppCompatActivity
                 .load(forestRef)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(new CircleTransform(getApplicationContext()))
-                .into(imageView);
+                .into(imageView);*/
+        setImageFromStorage(getApplicationContext(),"images/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg",imageView);
 
     }
 

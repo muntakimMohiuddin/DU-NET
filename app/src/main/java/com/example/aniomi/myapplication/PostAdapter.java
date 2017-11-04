@@ -99,13 +99,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
             holder.b1.setVisibility(View.VISIBLE);
             holder.b2.setVisibility(View.VISIBLE);
             holder.imageView.setVisibility(View.VISIBLE);
-            StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-            StorageReference forestRef;
-            storageRef = FirebaseStorage.getInstance().getReference();
-            forestRef = storageRef.child("POSTimages/"+temp.id+(post.a[position]+1)+".jpg");
-            Glide.with(context).using(new FirebaseImageLoader())
-                    .load(forestRef)
-                    .into(holder.imageView);
+            MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
             holder.b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -115,14 +109,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
                     }
 
                     else post.a[position]--;
-                    StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-                    StorageReference forestRef;
-
-                    storageRef = FirebaseStorage.getInstance().getReference();
-                    forestRef = storageRef.child("POSTimages/"+temp.id+(post.a[position]+1)+".jpg");
-                    Glide.with(context).using(new FirebaseImageLoader())
-                            .load(forestRef)
-                            .into(holder.imageView);
+                    MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
 
                 }
             });
@@ -136,15 +123,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
                     }
 
                     else post.a[position]++;
-
-                    StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-                    StorageReference forestRef;
-
-                    storageRef = FirebaseStorage.getInstance().getReference();
-                    forestRef = storageRef.child("POSTimages/"+temp.id+(post.a[position]+1)+".jpg");
-                    Glide.with(context).using(new FirebaseImageLoader())
-                            .load(forestRef)
-                            .into(holder.imageView);
+                    MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
 
                 }
             });
