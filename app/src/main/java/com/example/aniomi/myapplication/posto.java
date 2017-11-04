@@ -9,18 +9,25 @@ public class posto {
     String cnt;
     String t;
     String d;
-
     String sen;
-
-
-
     String description;
-    String dept;
+    String dept; // id
+
+    static int b[]=new int[100];
 
     public posto()
     {
         id=t=d=sen=description=dept="Omi";
         cnt="0";
+    }
+
+    public posto(String id , String cnt , String sen , String dept , String description)
+    {
+        this.id = id;
+        this.cnt = cnt;
+        this.sen = sen;
+        this.dept= dept;
+        this.description = description;
     }
 
     public posto(String id, String cnt, String t, String d, String sen, String description, String dept) {

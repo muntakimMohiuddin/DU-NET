@@ -1,33 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:fillViewport="true">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.aniomi.myapplication.Group_post">
 
-    <android.support.design.widget.AppBarLayout
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:id="@+id/imageView3" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_group_post" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Name"
+        android:textColor="#000000"
+        android:padding="6dp"
+        android:id="@+id/name"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/l2"
+        android:layout_alignParentStart="true">
+    </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/l2"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true">
+    <TextView
+        android:id="@+id/post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:text="Post"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_below="@+id/name"
+        android:layout_weight="1"
+        android:layout_alignParentStart="true" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/People"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:text="People"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_weight="1"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:text="About"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/People"
+        android:layout_alignParentEnd="true" />
+    </LinearLayout>
+
+</RelativeLayout>
+
+</ScrollView>

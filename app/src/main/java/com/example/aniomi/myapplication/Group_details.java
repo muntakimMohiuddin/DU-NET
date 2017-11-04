@@ -31,6 +31,7 @@ public class Group_details implements Serializable{
     private static Context context;
     public static Uri tfilePath;
     public static List<Group_details> staticList;
+    public static boolean edit ;
 
     Group_details(String name , String about , String  operner ,String adminPass ,String userPass,String groupID)
     {
@@ -102,6 +103,11 @@ public class Group_details implements Serializable{
                         final String openerID = Students.current.getUid();
                         Group_details group_details = new Group_details(tname,tabout,openerID,tadminPass,tuserPass,tgroupID);
                         mDatabase.child(tgroupID).setValue(group_details);
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("MyGroup").child(Students.current.getUid());
+                        mDatabase.child(tgroupID).setValue(group_details);
+
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Group_Admin").child(tgroupID);
+                        mDatabase.child(Students.current.getUid()).setValue(Students.current);
                         Toast.makeText(context, group_details.getAdminPass(), Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                         /*if (creatButton) {

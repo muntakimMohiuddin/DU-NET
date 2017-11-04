@@ -3,7 +3,6 @@ package com.example.aniomi.myapplication;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -111,88 +109,6 @@ public class MainFragment extends Fragment {
 
             }
         });
-        /*databaseUsers.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                list.clear();
-
-                for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    ////
-                    posto temp=users.getValue(posto.class);
-                    list.add(temp);
-
-
-                }
-                adapter=new PostAdapter(list,view.getContext());
-
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                list.clear();
-
-                for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    ////
-                    posto temp=users.getValue(posto.class);
-                    list.add(temp);
-
-
-                }
-                adapter=new PostAdapter(list,view.getContext());
-
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                list.clear();
-
-                for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    ////
-                    posto temp=users.getValue(posto.class);
-                    list.add(temp);
-
-
-                }
-                adapter=new PostAdapter(list,view.getContext());
-
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                list.clear();
-
-                for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    ////
-                    posto temp=users.getValue(posto.class);
-                    list.add(temp);
-
-
-                }
-                adapter=new PostAdapter(list,view.getContext());
-
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
         imdb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

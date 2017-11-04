@@ -117,4 +117,5 @@
     </string>
     <string name="title_activity_event">EventActivity</string>
     <string name="title_activity_group_post">Group_post</string>
+    <string name="title_activity_group_post_creat">Group_post_creat</string>
 </resources>

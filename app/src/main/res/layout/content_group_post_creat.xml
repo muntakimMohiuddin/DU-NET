@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:context="com.example.aniomi.myapplication.post"
+        android:background="#FFFEEF">
+        <RelativeLayout
+            android:id="@+id/rr1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#95FF11">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/not"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_margin="10dp"
+            android:id="@+id/r2"
+            android:layout_below="@+id/l2">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preview"
+                android:layout_below="@id/imageView"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#000000"/>-->
+        </RelativeLayout>
+
+        <EditText
+            android:layout_below="@+id/rr1"
+            android:layout_margin="15dp"
+            android:padding="4dp"
+            android:inputType="textMultiLine"
+            android:id="@+id/et1"
+            android:lines="10"
+            android:minLines="10"
+            android:background="@drawable/textinput"
+            android:gravity="top|left"
+            android:maxLines="10"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scrollbars="vertical"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:hint="Edit Your Message..."
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et1"
+            android:id="@+id/l2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <ImageButton
+                android:id="@+id/b1"
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Choose"
+                android:textColor="#FFFEEF"
+                android:background="#FFFEEF"
+                android:src="@mipmap/ic_photo_size_select_actual_black_36dp"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:id="@+id/b2"
+                android:src="@mipmap/ic_file_upload_black_36dp"
+                android:background="#FFFEEF"
+                android:textColor="#FFFEEF"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_width="0px"
+                android:layout_height="35dp"
+                android:text="Post"
+                android:id="@+id/bc"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:background="#FFFEEF"
+                android:src="@mipmap/ic_send_black_36dp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

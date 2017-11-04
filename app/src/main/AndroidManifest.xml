@@ -87,7 +87,12 @@
         <activity
             android:name=".Group_post"
             android:label="@string/title_activity_group_post"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Group_post_creat"
+            android:label="@string/title_activity_group_post_creat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Group_People"></activity>
     </application>
 
 </manifest>
