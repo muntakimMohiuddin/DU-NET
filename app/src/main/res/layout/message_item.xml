@@ -16,7 +16,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:id="@+id/r1">
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -28,7 +29,7 @@
             <TextView
                 android:layout_toRightOf="@id/imageView1"
                 android:background="@drawable/senders"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chatter"
                 android:textColor="#FFFFFF"
@@ -36,8 +37,38 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:padding="10dp"
+                android:layout_marginRight="30dp"
 
                 android:id="@+id/t1"/>
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/r1">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/imageView2"/>
+            <TextView
+                android:layout_toLeftOf="@id/imageView2"
+                android:background="@drawable/receivers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textColor="#FFFFFF"
+                android:textAlignment="viewStart"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:layout_marginLeft="30dp"
+
+                android:id="@+id/t2"/>
         </RelativeLayout>
     </LinearLayout>
 
