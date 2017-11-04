@@ -74,8 +74,12 @@ public class MainFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 list.clear();
-
-                for(DataSnapshot users : dataSnapshot.getChildren())
+                try {
+                    list=MainActivity.createListFromFirebase(new posto(),new posto(),dataSnapshot);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                /*for(DataSnapshot users : dataSnapshot.getChildren())
                 {
 
 
@@ -87,9 +91,8 @@ public class MainFragment extends Fragment {
 
                 }
                 Collections.reverse(list);
-                /*adapter=new PostAdapter(list,view.getContext());
-
-                recyclerView.setAdapter(adapter);*/
+                filter();*/
+                Collections.reverse(list);
                 filter();
             }
 
