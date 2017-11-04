@@ -26,12 +26,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,10 +67,16 @@ public class MainActivity extends AppCompatActivity
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(imageView);
     }
-    static <Type> ArrayList<Type> createListFromFirebase(Type obj,DatabaseReference firebaseReference) throws ClassNotFoundException {
-        //Class cl=Class.forName(className);
+    static <Type> List<Type> createListFromFirebase(Type temp,Object obj,DataSnapshot dataSnapshot) throws ClassNotFoundException {
         obj.getClass();
-        ArrayList<Type> list=new ArrayList<>();
+        List<Type> list=new ArrayList<>();
+
+        for(DataSnapshot users : dataSnapshot.getChildren())
+        {
+            Class cl=obj.getClass();
+            obj=users.getValue(obj.getClass());
+            list.add((Type) obj);
+        }
         return list;
     }
     @Override
