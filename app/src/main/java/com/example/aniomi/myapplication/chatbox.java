@@ -20,7 +20,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class chatbox extends Activity {
@@ -33,6 +39,41 @@ public class chatbox extends Activity {
     private ImageButton b1;
     private EditText t1;private TextView t2;
     public List<Messanger> list=new ArrayList<>();
+    public Date convertStringToDate(String dateString)
+    {
+        Date formatteddate = null;
+        try{
+            formatteddate = new SimpleDateFormat("yyyy/MM/dd").parse(dateString);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return formatteddate;
+    }
+    public Date convertStringToTime(String dateString)
+    {
+        Date formatteddate = null;
+        try{
+            formatteddate = new SimpleDateFormat("HH:mm:ss").parse(dateString);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return formatteddate;
+    }
+
+    public Comparator<Messanger> slopeOrder() {
+        return new Comparator<Messanger>() {
+            @Override
+            public int compare(Messanger a, Messanger b) {
+                // code here
+                if(convertStringToDate(a.date_).before(convertStringToDate(b.date_))) return 0;
+                else if(convertStringToDate(a.date_).after(convertStringToDate(b.date_))) return 1;
+                else if(convertStringToTime(a.date_).after(convertStringToTime(b.date_))) return 1;
+                return 0;
+            }
+        };
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +94,14 @@ public class chatbox extends Activity {
                     {
                         temp=users.getValue(Messanger.class);
                         list.add(temp);
+
                     }
 
 
 
                 }
+                //Collections.sort(list,(a2, b2)->convertStringToDate(a2.date_).before(convertStringToDate(b2.date_))? true :( (!convertStringToDate(a2.date_).before(convertStringToDate(b2.date_)) && !convertStringToDate(a2.date_).after(convertStringToDate(b2.date_)))) ? 0 : 1);
+                //Collections.sort(list,slopeOrder());
                 adapter=new chatbox_adapter(list,context);
 
                 recyclerView.setAdapter(adapter);

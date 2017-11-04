@@ -17,7 +17,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,7 +39,41 @@ public class messanger_home extends Fragment {
         // Required empty public constructor
     }
 
+    public Date convertStringToDate(String dateString)
+    {
+        Date formatteddate = null;
+        try{
+            formatteddate = new SimpleDateFormat("yyyy/MM/dd").parse(dateString);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return formatteddate;
+    }
+    public Date convertStringToTime(String dateString)
+    {
+        Date formatteddate = null;
+        try{
+            formatteddate = new SimpleDateFormat("HH:mm:ss").parse(dateString);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return formatteddate;
+    }
 
+    public Comparator<Messanger> slopeOrder() {
+        return new Comparator<Messanger>() {
+            @Override
+            public int compare(Messanger a, Messanger b) {
+                // code here
+                if(convertStringToDate(a.date_).before(convertStringToDate(b.date_))) return -1;
+                else if(convertStringToDate(a.date_).after(convertStringToDate(b.date_))) return 1;
+                else if(convertStringToTime(a.time_).after(convertStringToTime(b.time_))) return 1;
+                return -1;
+            }
+        };
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,6 +99,8 @@ public class messanger_home extends Fragment {
 
 
                 }
+                Collections.sort(list,slopeOrder());
+                Collections.reverse(list);
                 adapter=new messanger_home_adapter(list,view.getContext());
 
                 recyclerView.setAdapter(adapter);
