@@ -11,7 +11,8 @@
             android:title="Social" />
         <item
             android:id="@+id/nav_slideshow"
-            android:title="Find department" />
+            android:title="Find department"
+            android:icon="@drawable/ic_dept"/>
         <item
             android:id="@+id/nav_manage"
             android:title="Event" />
