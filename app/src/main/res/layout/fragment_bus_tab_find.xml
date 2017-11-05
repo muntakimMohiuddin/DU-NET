@@ -10,7 +10,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/layout_background_rounded_edge"
+        android:elevation="5dp"
+        android:padding="15dp"
+        android:paddingBottom="45dp"
+        android:layout_marginBottom="40dp"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/dd_bus"/>
 
         <fragment
             android:id="@+id/search_rout_fragment"
@@ -21,13 +33,13 @@
 
         <Button
             android:id="@+id/find_bus_button"
-            android:layout_alignBottom="@+id/search_rout_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:text="SEARCH" />
+            android:text="SEARCH"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edged_button"
+            android:drawableLeft="@drawable/ic_search_black_24dp"/>
     </LinearLayout>
-
-
 
 </RelativeLayout>

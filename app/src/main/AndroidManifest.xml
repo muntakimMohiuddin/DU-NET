@@ -79,7 +79,8 @@
         <activity android:name=".activity_bus" />
         <activity android:name=".Adapter" />
         <activity android:name=".BusList" />
-        <activity android:name=".BusTrackFinal" />
+        <activity android:name=".BusTrackFinal"
+            android:screenOrientation="portrait"/>
         <activity android:name=".FindDepartment" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".SearchBus" />
@@ -98,7 +99,6 @@
             android:label="@string/title_activity_group_post_creat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Group_People" />
-        <activity android:name=".activity_bus_track"></activity>
     </application>
 
 </manifest>

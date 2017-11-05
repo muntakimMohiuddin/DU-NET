@@ -6,76 +6,76 @@
     android:paddingBottom="15dp"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
+    android:background="#fff"
     tools:context="com.example.aniomi.myapplication.BusActivity">
 
-    <RelativeLayout
+
+
+    <LinearLayout
+        android:background="@drawable/layout_background_rounded_edge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:orientation="vertical"
         android:elevation="5dp"
         android:padding="15dp"
         android:paddingTop="35dp">
 
-        <LinearLayout
-            android:background="#c0dbcf"
+        <ImageView
+            android:src="@drawable/ic_red_bus_front"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:paddingBottom="25dp"
+            android:layout_gravity="center"/>
+
+        <fragment
+            android:id="@+id/search_bus_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-           <!-- <ImageView
-                android:src="@drawable/dd_bus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="25dp"
-                android:layout_gravity="center"/>-->
-
-            <fragment
-                android:id="@+id/search_bus_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.example.aniomi.myapplication.SearchBus">
-            </fragment>
+            android:name="com.example.aniomi.myapplication.SearchBus">
+        </fragment>
 
 
-            <Button
-                android:layout_alignBottom="@+id/search_bus_fragment"
-                android:id="@+id/search_bus_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="find this bus"
-                android:layout_gravity="center"/>
+        <Button
+            android:background="@drawable/edged_button"
+            android:layout_alignBottom="@+id/search_bus_fragment"
+            android:id="@+id/search_bus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  find this bus  "
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            />
 
 
 
-            <TextView
-                android:textAppearance="@android:style/TextAppearance.Large"
-                android:id="@+id/bus_info"
-                android:paddingTop="20dp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                />
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:id="@+id/bus_info"
+            android:paddingTop="20dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            />
 
-            <TextView
-                android:id="@+id/b_time"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                android:textStyle="normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAlignment="center"/>
-            <Button
-                android:id="@+id/track_button"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:text="TRACK"
-                android:layout_gravity="center"
-                />
+        <TextView
+            android:id="@+id/b_time"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/track_button"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="TRACK"
+            android:background="@drawable/edged_button"
+            android:layout_gravity="center"
+            />
 
-        </LinearLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
