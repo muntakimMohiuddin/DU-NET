@@ -60,7 +60,7 @@ public class Add_book extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_add_book);
+       // setContentView(R.layout.fragment_add_book);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View v = layoutInflater.inflate(R.layout.fragment_add_book, null);

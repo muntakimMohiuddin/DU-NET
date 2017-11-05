@@ -4,7 +4,8 @@
     <group android:id="@+id/group1" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:title="Find Bus" />
+            android:title="Find Bus"
+            android:icon="@drawable/ic_bus_black"/>
         <item
             android:id="@+id/nav_gallery"
             android:title="Social" />
@@ -16,7 +17,8 @@
             android:title="Event" />
         <item
             android:id="@+id/nav_ebook"
-            android:title="Ebook" />
+            android:title="Ebook"
+            android:icon="@mipmap/ic_picture_as_pdf_black_24dp"/>
         <item
             android:id="@+id/nav_nearby"
             android:title="Nearby" />

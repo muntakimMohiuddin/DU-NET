@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        invalidateOptionsMenu();
     }
 
     @Override
@@ -145,24 +146,30 @@ public class MainActivity extends AppCompatActivity
             getMenuInflater().inflate(R.menu.main, menu);
             return true;
         }
-        else if(it==1)
+        else if(it==R.id.nav_manage)
         {
             getMenuInflater().inflate(R.menu.menu_event_page_main, menu);
             return true;
         }
-        else if(it == 2)
+        else if(it == R.id.nav_group)
         {
             getMenuInflater().inflate(R.menu.menu_creat_group, menu);
             return true;
         }
-        else if(it == 3)
+        else if(it == R.id.creat_group)
         {
             getMenuInflater().inflate(R.menu.group_creat_done, menu);
+            it = R.id.action_group_creat_done;
             return true;
         }
-        else if(it == 4)
+        else if(it == R.id.nav_ebook)
         {
             getMenuInflater().inflate(R.menu.add_pdf, menu);
+            return true;
+        }
+        else if(it == R.id.action_group_creat_done)
+        {
+            getMenuInflater().inflate(R.menu.menu_creat_group, menu);
             return true;
         }
         return true;
@@ -176,23 +183,27 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "DONE", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.Search) {
+            it = R.id.Search;
             Event_Search event_search = new Event_Search(MainActivity.this);
         }
         else if(id == R.id.creat_group)
         {
-            it = 3;
+            it = R.id.creat_group;
             Group_creat fragment = new Group_creat();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             invalidateOptionsMenu();
         }
         else if(id == R.id.action_group_creat_done)
         {
+            it = R.id.action_group_creat_done;
             Group_details.Creat_Group(MainActivity.this);
         }
         else if(id == R.id.add_book)
         {
+            it = R.id.add_book;
             Intent my=new Intent(this,Add_book.class);
             startActivity(my);
         }
@@ -206,64 +217,82 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            it = R.id.nav_camera;
             BusTab fragment=new BusTab();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
 
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            it = R.id.nav_gallery;
             SocialTab fragment=new SocialTab();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
 
         } else if (id == R.id.nav_slideshow) {
+            it = R.id.nav_slideshow;
             Intent intent = new Intent(MainActivity.this,FindDepartment.class);
             startActivity(intent);
 
 
         } else if (id == R.id.nav_manage) {
+            it = R.id.nav_manage;
             EventTabs fragment=new EventTabs();
-            it = 1;
+            it = R.id.nav_manage;
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             invalidateOptionsMenu();
 
         } else if (id == R.id.nav_ebook) {
+            it = R.id.nav_ebook;
             Book_list fragment=new Book_list();
-            it = 4;
+            it = R.id.nav_ebook;
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             invalidateOptionsMenu();
 
         } else if (id == R.id.nav_nearby) {
             /*Intent intent = new Intent(MainActivity.this,nearby.class);
             startActivity(intent);*/
+            it = R.id.nav_nearby;
             nearby fragment = new nearby();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
         }
 
         else if (id == R.id.nav_share) {
-
+            it = R.id.nav_share;
             ProfileTab fragment=new ProfileTab();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
-
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
 
 
         } else if (id == R.id.nav_send) {
+            it = R.id.nav_send;
             Intent my=new Intent(this,post.class);
             startActivity(my);
 
         }
         else if (id == R.id.nav_sign_out) {
             //uhiiuhu9oh9h
+            it = R.id.nav_sign_out;
             FirebaseAuth.getInstance().signOut();
             Intent my=new Intent(this,OpeningActivity.class);
             startActivity(my);
@@ -272,10 +301,11 @@ public class MainActivity extends AppCompatActivity
 
         else if(id == R.id.nav_group)
         {
-            it = 2;
+            it = R.id.nav_group;
             GroupTab fragment = new GroupTab();
             android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             invalidateOptionsMenu();
         }
@@ -284,6 +314,4 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 }
