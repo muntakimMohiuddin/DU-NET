@@ -17,25 +17,24 @@
     <EditText
         android:id="@+id/dept_name"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="true"
+        android:hint="Select department or building"
         />
     <Button
         android:id="@+id/button_s"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="search"/>
+        android:text="find"/>
 
     <fragment
         android:id="@+id/du_map"
         class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        />
-
+        android:layout_alignParentTop="true"/>
 
 </LinearLayout>

@@ -8,24 +8,28 @@
             android:icon="@drawable/ic_bus_black"/>
         <item
             android:id="@+id/nav_gallery"
-            android:title="Social" />
+            android:title="Social"
+            android:icon="@drawable/ic_menu_social"/>
         <item
             android:id="@+id/nav_slideshow"
             android:title="Find department"
             android:icon="@drawable/ic_dept"/>
         <item
             android:id="@+id/nav_manage"
-            android:title="Event" />
+            android:title="Event"
+            android:icon="@drawable/ic_menu_event"/>
         <item
             android:id="@+id/nav_ebook"
             android:title="Ebook"
-            android:icon="@mipmap/ic_picture_as_pdf_black_24dp"/>
+            android:icon="@drawable/ic_menu_ebook"/>
         <item
             android:id="@+id/nav_nearby"
-            android:title="Nearby" />
+            android:title="Nearby"
+            android:icon="@drawable/ic_menu_nearby"/>
         <item
             android:id="@+id/nav_group"
-            android:title="Group" />
+            android:title="Group"
+            android:icon="@drawable/ic_menu_group"/>
 
 
 
@@ -35,13 +39,16 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:title="Profile" />
+                android:title="Profile"
+                android:icon="@drawable/ic_menu_profile_n"/>
             <item
                 android:id="@+id/nav_send"
-                android:title="Post" />
+                android:title="Post"
+                android:icon="@drawable/ic_menu_postn"/>
             <item
                 android:id="@+id/nav_sign_out"
-                android:title="Sign out" />
+                android:title="Sign out"
+                android:icon="@drawable/logout"/>
         </menu>
     </item>
 
