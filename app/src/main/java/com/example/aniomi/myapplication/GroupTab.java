@@ -35,5 +35,4 @@ public class GroupTab extends Fragment {
         });
         return v;
     }
-
 }

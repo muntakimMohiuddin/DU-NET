@@ -60,7 +60,7 @@ public class Add_book extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_book_list);
+        setContentView(R.layout.fragment_add_book);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View v = layoutInflater.inflate(R.layout.fragment_add_book, null);
@@ -83,6 +83,7 @@ public class Add_book extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         upload();
+                        finish();
                     }
                 }
         );
@@ -112,9 +113,9 @@ public class Add_book extends AppCompatActivity {
 
                 StorageReference newStorageRef = storageReference.child(department + "/" + fileName);
 
-                final ProgressDialog progressDialog = new ProgressDialog(this);
-                progressDialog.setTitle("Uploading "+fileName+"...");
-                progressDialog.show();
+                final ProgressDialog[] progressDialog = {new ProgressDialog(this)};
+                progressDialog[0].setTitle("Uploading "+fileName+"...");
+                progressDialog[0].show();
 
                 newStorageRef.putFile(filePath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -126,26 +127,37 @@ public class Add_book extends AppCompatActivity {
                                 Document doc = new Document(docName,fileUrl);
                                 databaseReference.push().setValue(doc);
 
-                                progressDialog.setMessage("DONE");
-                                progressDialog.dismiss();
+                                progressDialog[0].setMessage("DONE");
+                                try{
+                                    if((progressDialog[0] != null) && progressDialog[0].isShowing()){
+                                        progressDialog[0].dismiss();
+                                    }
+                                }catch (final IllegalArgumentException e){
+                                    //
+                                }
+                                catch (final Exception e){
+                                    //
+                                }finally {
+                                    progressDialog[0] = null;
+                                }
+
                                 Toast.makeText(Add_book.this, "File upload complete !", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                progressDialog.setMessage("Upload Failed !");
-                                progressDialog.dismiss();
+                                progressDialog[0].setMessage("Upload Failed !");
+                                progressDialog[0].dismiss();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                 double percentage = (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                progressDialog.setMessage((int) percentage + "% uploaded");
+                                progressDialog[0].setMessage((int) percentage + "% uploaded");
                             }
                         });
-                finish();
             } else {
                 Toast.makeText(this, "Enter file name", Toast.LENGTH_SHORT).show();
             }
