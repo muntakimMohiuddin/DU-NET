@@ -58,6 +58,11 @@
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Add_book"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".popupfind"
             android:theme="@style/AppTheme.CustomThem" />

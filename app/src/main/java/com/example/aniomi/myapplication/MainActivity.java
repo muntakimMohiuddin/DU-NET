@@ -160,6 +160,11 @@ public class MainActivity extends AppCompatActivity
             getMenuInflater().inflate(R.menu.group_creat_done, menu);
             return true;
         }
+        else if(it == 4)
+        {
+            getMenuInflater().inflate(R.menu.add_pdf, menu);
+            return true;
+        }
         return true;
     }
 
@@ -185,6 +190,15 @@ public class MainActivity extends AppCompatActivity
         else if(id == R.id.action_group_creat_done)
         {
             Group_details.Creat_Group(MainActivity.this);
+        }
+        else if(id == R.id.add_book)
+        {
+           /* Add_book fragment=new Add_book(MainActivity.this);
+            *//*android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();*/
+            Intent my=new Intent(this,Add_book.class);
+            startActivity(my);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -222,9 +236,12 @@ public class MainActivity extends AppCompatActivity
             invalidateOptionsMenu();
 
         } else if (id == R.id.nav_ebook) {
-            PdfArchive.department=Students.current.dept;
-            Intent intent = new Intent(MainActivity.this,PdfArchive.class);
-            startActivity(intent);
+            Book_list fragment=new Book_list();
+            it = 4;
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.commit();
+            invalidateOptionsMenu();
 
         } else if (id == R.id.nav_nearby) {
             /*Intent intent = new Intent(MainActivity.this,nearby.class);
