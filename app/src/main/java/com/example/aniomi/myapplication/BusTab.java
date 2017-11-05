@@ -32,7 +32,7 @@ public class BusTab extends Fragment {
         viewPager=(ViewPager)v.findViewById(R.id.viewpager);
         //set an adpater
 
-        viewPager.setAdapter(new MyAdapter( getChildFragmentManager()));
+        viewPager.setAdapter(new BusTabAdapter( getChildFragmentManager()));
 
         tabLayout.post(new Runnable() {
             @Override
