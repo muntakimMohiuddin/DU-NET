@@ -3,12 +3,15 @@ package com.example.aniomi.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,6 +55,7 @@ public class EventTabs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.fragment_event_tabs, container, false);
+        getActivity().setTitle("EVENTS");
         tabLayout=(TabLayout)v.findViewById(R.id.tabs);
         viewPager=(ViewPager)v.findViewById(R.id.container);
         fav = (FloatingActionButton) v.findViewById(R.id.myFAB);
@@ -81,5 +85,17 @@ public class EventTabs extends Fragment {
             }
         });
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_event_page_main,menu);
+        return;
     }
 }

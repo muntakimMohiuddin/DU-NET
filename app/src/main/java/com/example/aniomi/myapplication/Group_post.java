@@ -52,6 +52,7 @@ public class Group_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_post);
 
+        setTitle(Group_details.tname);
         recyclerView=findViewById(R.id.recycler);
         photo = findViewById(R.id.imageView3);
         name = findViewById(R.id.name);

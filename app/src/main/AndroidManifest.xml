@@ -92,7 +92,6 @@
         <activity android:name=".Event_Search" />
         <activity
             android:name=".Group_post"
-            android:label="@string/title_activity_group_post"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Group_post_creat"

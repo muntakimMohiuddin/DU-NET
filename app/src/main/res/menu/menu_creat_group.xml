@@ -5,7 +5,7 @@
 
     <item android:id="@+id/creat_group"
         android:title="Creat"
-        android:icon="@mipmap/ic_add_white_24dp"
+        android:icon="@mipmap/ic_add_white_48dp"
         app:showAsAction="ifRoom"
         />
 </menu>

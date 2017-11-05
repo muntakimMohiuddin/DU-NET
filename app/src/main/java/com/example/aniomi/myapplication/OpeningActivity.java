@@ -13,10 +13,6 @@ public class OpeningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening);
-        /*In_out_tab fragment=new In_out_tab();
-        android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commit();*/
 
         logIn_Fragment fragment=new logIn_Fragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
@@ -24,4 +20,8 @@ public class OpeningActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        //
+    }
 }

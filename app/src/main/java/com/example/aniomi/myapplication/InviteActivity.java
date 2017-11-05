@@ -50,6 +50,7 @@ public class InviteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
+        setTitle("INVITE PEOPLE");
 
         searchButton = (ImageButton) findViewById(R.id.searchImage);
         drop = (ImageButton) findViewById(R.id.imageButton10);

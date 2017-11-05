@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -55,6 +54,7 @@ public class CreatEventsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creat_events);
+        setTitle("CREATE EVENT");
         mName = (EditText) findViewById(R.id.editText8);
         mDate = (EditText) findViewById(R.id.editText11);
         mTime = (EditText) findViewById(R.id.editText12);
