@@ -193,10 +193,6 @@ public class MainActivity extends AppCompatActivity
         }
         else if(id == R.id.add_book)
         {
-           /* Add_book fragment=new Add_book(MainActivity.this);
-            *//*android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame,fragment);
-            fragmentTransaction.commit();*/
             Intent my=new Intent(this,Add_book.class);
             startActivity(my);
         }

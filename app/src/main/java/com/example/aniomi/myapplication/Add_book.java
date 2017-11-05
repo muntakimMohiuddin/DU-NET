@@ -87,12 +87,14 @@ public class Add_book extends AppCompatActivity {
                 }
         );
 
-        /*upButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                upload();
-            }
-        });*/
+        builder2.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                }
+        );
         builder2.setView(v);
         AlertDialog alert11 = builder2.create();
         alert11.setCanceledOnTouchOutside(false);
@@ -143,6 +145,7 @@ public class Add_book extends AppCompatActivity {
                                 progressDialog.setMessage((int) percentage + "% uploaded");
                             }
                         });
+                finish();
             } else {
                 Toast.makeText(this, "Enter file name", Toast.LENGTH_SHORT).show();
             }
