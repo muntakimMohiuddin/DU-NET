@@ -5,42 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
+    android:paddingBottom="5dp"
     tools:context="com.example.aniomi.myapplication.activity_bus">
 
-    <RelativeLayout
+
+
+    <RadioGroup
+        android:id="@+id/rdogrp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="0dp"
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="FIND BUS"/>
+
+        <RadioButton
+            android:id="@+id/btn2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="0dp"
+            android:paddingTop="3dp"
+            android:background="#9b9b9b"
+            android:button="@null"
+            android:gravity="center"
+            android:text="TRACK BUS"/>
+    </RadioGroup>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:elevation="5dp"
-        android:padding="15dp"
-        android:paddingBottom="45dp">
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/layout_background_rounded_edge"
+            android:elevation="5dp"
+            android:padding="15dp"
+            android:paddingBottom="45dp">
 
-            <fragment
-                android:id="@+id/search_rout_fragment"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.example.aniomi.myapplication.searchByRout">
-            </fragment>
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/search_rout_button"
-                android:layout_alignBottom="@+id/search_rout_fragment"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:text="SEARCH" />
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="90dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bus_banner"/>
 
-    </RelativeLayout>
+                <fragment
+                    android:id="@+id/search_rout_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.example.aniomi.myapplication.searchByRout">
+                </fragment>
+
+                <Button
+                    android:id="@+id/search_rout_button"
+                    android:layout_alignBottom="@+id/search_rout_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="SEARCH"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edged_button"
+                    android:drawableLeft="@drawable/ic_search_black_24dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,7 +125,8 @@
                 android:id="@+id/search_bus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="find this bus"
+                android:text=" find this bus"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
                 android:layout_gravity="center"/>
 
 
@@ -97,8 +154,9 @@
                 android:id="@+id/track_button"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:text="TRACK"
+                android:text="  TRACK"
                 android:layout_gravity="center"
+                android:drawableLeft="@drawable/car"
                 />
 
         </LinearLayout>

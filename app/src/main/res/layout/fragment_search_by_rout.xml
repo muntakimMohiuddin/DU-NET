@@ -19,7 +19,8 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:clickable="true"
-                android:hint="Enter your location"/>
+                android:background="@drawable/textinput"
+                android:hint="   Enter your location"/>
 
 
             <EditText
@@ -29,7 +30,9 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:clickable="true"
-                android:hint="Enter destination"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/textinput"
+                android:hint="   Enter destination"/>
 
 
 <!--    </LinearLayout>

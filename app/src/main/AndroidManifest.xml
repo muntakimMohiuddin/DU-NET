@@ -92,7 +92,8 @@
             android:name=".Group_post_creat"
             android:label="@string/title_activity_group_post_creat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Group_People"></activity>
+        <activity android:name=".Group_People" />
+        <activity android:name=".activity_bus_track"></activity>
     </application>
 
 </manifest>
