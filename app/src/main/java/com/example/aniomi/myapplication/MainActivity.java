@@ -168,8 +168,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if(id == R.id.add_book)
         {
-            Intent my=new Intent(this,Add_book.class);
-            startActivity(my);
+            /*Intent my=new Intent(this,Add_book.class);
+            startActivity(my);*/
         }
         return super.onOptionsItemSelected(item);
     }
