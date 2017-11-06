@@ -98,6 +98,14 @@
             android:label="@string/title_activity_group_post_creat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Group_People" />
+
+        <activity android:name=".NotificationView"
+            android:label="Details of notification"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

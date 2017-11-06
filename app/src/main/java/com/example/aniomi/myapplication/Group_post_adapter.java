@@ -95,8 +95,16 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
         }
         else
         {
-            holder.b1.setVisibility(View.VISIBLE);
-            holder.b2.setVisibility(View.VISIBLE);
+            if(holder.cnt == 1)
+            {
+                holder.b1.setVisibility(View.GONE);
+                holder.b2.setVisibility(View.GONE);
+            }
+            else
+            {
+                holder.b1.setVisibility(View.VISIBLE);
+                holder.b2.setVisibility(View.VISIBLE);
+            }
             holder.imageView.setVisibility(View.VISIBLE);
             storageRef = FirebaseStorage.getInstance().getReference();
             forestRef = storageRef.child("Group_post_image/"+temp.id+(posto.b[position]+1)+".jpg");

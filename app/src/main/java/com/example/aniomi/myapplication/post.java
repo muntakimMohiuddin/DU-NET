@@ -1,8 +1,11 @@
 package com.example.aniomi.myapplication;
 
 import android.app.DatePickerDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -11,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
@@ -135,8 +139,22 @@ public class post extends AppCompatActivity {
                 posto temp=new posto(postid,taken+"",t,d,Students.current.getName(),et1.getText().toString(),choose);
                 ds.setValue(temp);
                 taken=0;
-                et1.setText("");
                 choose="Any";
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(post.this)
+                                .setSmallIcon(R.mipmap.ic_home_black_24dp)
+                                .setContentTitle("New Post")
+                                .setContentText(et1.getText().toString());
+
+                Intent notificationIntent = new Intent(post.this, MainActivity.class);
+                PendingIntent contentIntent = PendingIntent.getActivity(post.this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(contentIntent);
+
+                // Add as notification
+                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                manager.notify(0, builder.build());
+
+                et1.setText("");
             }
         });
 
@@ -289,4 +307,5 @@ public class post extends AppCompatActivity {
 
         }
     }
+
 }
