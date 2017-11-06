@@ -260,6 +260,15 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             invalidateOptionsMenu();
         }
+        else if(id == R.id.nav_notice)
+        {
+            MainFragment fragment = new MainFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            invalidateOptionsMenu();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
