@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import static com.example.aniomi.myapplication.EventTabs.int_items;
-
 /**
  * Created by aniomi on 11/3/17.
  */
@@ -35,7 +33,7 @@ public class EventTabsAdapter  extends FragmentPagerAdapter {
     public int getCount() {
 
 
-        return int_items;
+        return 4 ;
     }
 
     public CharSequence getPageTitle(int position) {

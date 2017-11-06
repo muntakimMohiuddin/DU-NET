@@ -61,6 +61,8 @@ public class Group_post_creat extends AppCompatActivity {
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         et1 = findViewById(R.id.et1);
+        et1.setText(posto.ttext);
+        posto.ttext = "";
         DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference().child("Group_post").child(Group_details.tgroupID);
         ds = databaseUsers.push();
 

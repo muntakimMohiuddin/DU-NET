@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import static com.example.aniomi.myapplication.EventTabs.int_items;
-
 public class BusTabAdapter  extends FragmentPagerAdapter {
     public BusTabAdapter(FragmentManager fm) {
         super(fm);
@@ -30,7 +28,7 @@ public class BusTabAdapter  extends FragmentPagerAdapter {
     public int getCount() {
 
 
-        return int_items=2;
+        return 2;
     }
 
     public CharSequence getPageTitle(int position) {

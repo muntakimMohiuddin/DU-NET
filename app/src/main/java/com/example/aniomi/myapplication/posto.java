@@ -13,6 +13,9 @@ public class posto {
     String description;
     String dept; // id
 
+    //ASIF
+    static String ttext;
+
     static int b[]=new int[100];
 
     public posto()

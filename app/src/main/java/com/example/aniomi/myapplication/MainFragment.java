@@ -66,6 +66,7 @@ public class MainFragment extends Fragment {
         final View view= inflater.inflate(R.layout.fragment_main, container, false);
         recyclerView=view.findViewById(R.id.recycler);
         cn=view.getContext();
+        getActivity().setTitle("HOME");
         dept.add("CSE");dept.add("EEE");dept.add("IT");dept.add("Physics");dept.add("Mechatronics");dept.add("Microbilogy");dept.add("Any");dept.add("Pharmacy");
         imdb=view.findViewById(R.id.imdb);
         DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Posts");

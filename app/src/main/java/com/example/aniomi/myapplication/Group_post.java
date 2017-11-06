@@ -55,7 +55,7 @@ public class Group_post extends AppCompatActivity {
         setTitle(Group_details.tname);
         recyclerView=findViewById(R.id.recycler);
         photo = findViewById(R.id.imageView3);
-        name = findViewById(R.id.name);
+        //name = findViewById(R.id.name);
         post = findViewById(R.id.post);
         about = findViewById(R.id.about);
         people = findViewById(R.id.People);
@@ -101,7 +101,7 @@ public class Group_post extends AppCompatActivity {
                 .into(photo);
 
         photo.setLayerType(View.LAYER_TYPE_HARDWARE,null);
-        name.setText(Group_details.tname);
+       // name.setText(Group_details.tname);
 
         DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Group_post").child(tgroupID);
         databaseUsers.addValueEventListener(new ValueEventListener() {

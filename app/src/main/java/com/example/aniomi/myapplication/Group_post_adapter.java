@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -36,7 +37,7 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
     {
         public TextView t1,t2,t3,t4,t5;
         public ImageView imageView,pic,image;
-        public ImageButton b1,b2,imdb;
+        public ImageButton b1,b2,imdb,edit;
         int cp=1,cnt;
         public CardView cv;
         public sViewHolder(View itemView) {
@@ -52,6 +53,7 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
             imageView=itemView.findViewById(R.id.imageView);
             cv=(CardView) itemView.findViewById(R.id.cv);
             image= (ImageView) itemView.findViewById(R.id.pic);
+            edit = itemView.findViewById(R.id.edit);
         }
 
 
@@ -78,6 +80,13 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
 
         StorageReference storageRef;
         StorageReference forestRef;
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        final String userID = Students.current.getUid();
+
+        if(userID.equals(temp.dept))
+            holder.edit.setVisibility(View.VISIBLE);
+        else
+            holder.edit.setVisibility(View.INVISIBLE);
 
         storageRef = FirebaseStorage.getInstance().getReference();
         forestRef = storageRef.child("images/"+temp.getDept()+".jpg");
@@ -162,6 +171,15 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
                 }
             });
         }
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                posto.ttext = holder.t4.getText().toString();
+                Intent intent = new Intent(context , Group_post_creat.class);
+                context.startActivity(intent);
+            }
+        });
 
 
     }
