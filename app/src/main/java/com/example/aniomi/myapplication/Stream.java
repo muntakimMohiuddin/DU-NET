@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,39 +41,7 @@ public class Stream extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        /*for(int i=0;i<10;i++)
-        {
-            //databaseUsers.push().setValue(new Streamo("Message","Omi","oni","1244"));
-            list.add((new Streamo("Message","Omi","oni","1234")));
-        }*/
-        //adapter=new StreamAdapter(list);
-        /*databaseUsers.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //list.clear();
 
-                for(DataSnapshot users : dataSnapshot.getChildren())
-                {
-
-
-                    //Streamo temp=users.getValue(Streamo.class);
-                    //if(temp.rec.equals(OpeningActivity.curr.uid))
-                    {
-                        //list.add(temp);
-                    }
-
-
-                }
-                //adapter=new StreamAdapter(list);
-
-                //recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
     }
 
@@ -106,6 +75,7 @@ public class Stream extends Fragment {
 
 
                 }
+                Collections.reverse(list);
                 adapter=new StreamAdapter2(list,view.getContext());
 
                 recyclerView.setAdapter(adapter);
