@@ -14,6 +14,11 @@
             android:background="#EEEEEE"
             android:layout_margin="8dp"
             android:id="@+id/r5">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/profile"
+                android:layout_margin="4dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,6 +30,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:paddingTop="8dp"
+                android:layout_toRightOf="@+id/profile"
                 />
 
             <TextView

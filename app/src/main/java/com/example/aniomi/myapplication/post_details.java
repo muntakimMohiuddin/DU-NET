@@ -71,10 +71,13 @@ public class post_details extends AppCompatActivity {
         t1.setText(currentpost.getSen());
         t2.setText(currentpost.getD());
         t3.setText(currentpost.getT());
+        t3.setVisibility(View.GONE);
         t5.setText(currentpost.getDept());
         t4.setText(currentpost.getDescription());
         imageView=findViewById(R.id.imageView);
         recyclerView=findViewById(R.id.recycler);
+        ImageView profile=findViewById(R.id.profile);
+        MainActivity.setImageFromStorage(getApplicationContext(),"images/"+t3.getText().toString()+".jpg",profile);
         final DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("comments").child(currentpost.getId());
         databaseUsers.addValueEventListener(new ValueEventListener() {
             @Override

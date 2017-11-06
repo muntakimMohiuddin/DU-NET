@@ -29,7 +29,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
     public class sViewHolder extends RecyclerView.ViewHolder
     {
         public TextView t1,t2,t3,t4,t5;
-        public ImageView imageView,pic;
+        public ImageView imageView,profile;
         public ImageButton b1,b2,imdb;
         int cp=1,cnt;
         public CardView cv;
@@ -44,6 +44,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
             b2=itemView.findViewById(R.id.b2);
             imdb=itemView.findViewById(R.id.imdb);
             imageView=itemView.findViewById(R.id.imageView);
+            profile=itemView.findViewById(R.id.profile);
             cv=(CardView) itemView.findViewById(R.id.cv);
         }
 
@@ -65,10 +66,12 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
         //holder.text4.setText("Send");
         holder.t1.setText(((temp.getSen())));
         holder.t2.setText(temp.getD());
+
         holder.t3.setText(temp.getT());
+        holder.t3.setVisibility(View.GONE);
         holder.t4.setText(temp.getDescription());
         holder.t5.setText(temp.getDept());
-
+        MainActivity.setImageFromStorage(context,"images/"+holder.t3.getText().toString()+".jpg",holder.profile);
         if(holder.cnt==0)
         {
             holder.b1.setVisibility(View.GONE);
@@ -94,9 +97,8 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
                 public void onClick(View view) {
                     if(post.a[position]+1==1)
                     {
-                        post.a[position]=post.a[position]-1;
+                        post.a[position]=Integer.parseInt(temp.cnt)-1;
                     }
-
                     else post.a[position]--;
                     MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
 
@@ -110,7 +112,6 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
                     {
                         post.a[position]=0;
                     }
-
                     else post.a[position]++;
                     MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
 

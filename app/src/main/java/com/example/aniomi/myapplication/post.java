@@ -136,7 +136,7 @@ public class post extends AppCompatActivity {
                 String d,t;
                 d=(String)dateFormat.format(date);
                 t=(String)dateFormat1.format(date1);
-                posto temp=new posto(postid,taken+"",t,d,Students.current.getName(),et1.getText().toString(),choose);
+                posto temp=new posto(postid,taken+"",Students.current.uid,d,Students.current.getName(),et1.getText().toString(),choose);
                 ds.setValue(temp);
                 taken=0;
                 choose="Any";
