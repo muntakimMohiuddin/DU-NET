@@ -5,40 +5,24 @@ package com.example.aniomi.myapplication;
  */
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-import static android.support.constraint.R.id.parent;
-import static android.support.v4.content.ContextCompat.startActivity;
 import static android.view.LayoutInflater.from;
-import static java.security.AccessController.getContext;
 
 /**
  * Created by aniomi on 10/1/17.
@@ -93,9 +77,9 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
 
         final Students temp=list.get(position);
         //holder.setIsRecyclable(false);
-        holder.text1.setText("User Name : "+temp.getName());
-        holder.text2.setText("Department : "+temp.getDept());
-        holder.text3.setText("Year : "+temp.getYear());
+        holder.text1.setText(temp.getName());
+        holder.text2.setText(temp.getDept());
+        holder.text3.setText(temp.getYear());
         holder.text4.setText(temp.getUid());
         holder.text5.setText(temp.getBlood());
         holder.text6.setText(temp.getLoc());

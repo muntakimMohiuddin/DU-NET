@@ -38,6 +38,7 @@ public class MainFragment extends Fragment {
     SpinnerDialog deptdialog;
     String current="Any";
     Context cn;
+    DatabaseReference mDatabase;
     public MainFragment() {
         current="Any";
     }
