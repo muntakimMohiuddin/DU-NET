@@ -77,6 +77,14 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
             holder.b1.setVisibility(View.GONE);
             holder.b2.setVisibility(View.GONE);
             holder.imageView.setVisibility(View.GONE);
+            holder.imdb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    post_details.currentpost=temp;
+                    Intent my=new Intent(context,post_details.class);
+                    context.startActivity(my);
+                }
+            });
         }
         else
         {
@@ -115,8 +123,8 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
                     else post.a[position]++;
                     MainActivity.setImageFromStorageNonCircle(context,"POSTimages/"+temp.id+(post.a[position]+1)+".jpg",holder.imageView);
 
-                }
-            });
+        }
+    });
             holder.imdb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -127,6 +135,14 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.sViewHolder>{
             });
         }
 
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                post_details.currentpost=temp;
+                Intent my=new Intent(context,post_details.class);
+                context.startActivity(my);
+            }
+        });
 
     }
 

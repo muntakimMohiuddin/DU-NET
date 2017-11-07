@@ -58,10 +58,7 @@ public class post_details extends AppCompatActivity {
         b1=findViewById(R.id.b1);
         b2=findViewById(R.id.b2);
         sendb=findViewById(R.id.sendb);
-
-        upb=findViewById(R.id.upb);
-
-        downb=findViewById(R.id.downb);
+        setTitle("POST");
         t1=findViewById(R.id.t1);
         t2=findViewById(R.id.t2);
         t3=findViewById(R.id.t3);
@@ -129,18 +126,8 @@ public class post_details extends AppCompatActivity {
                 t=(String)dateFormat1.format(date1);
                 comment temp=new comment(Students.current.getUid(),Students.current.getName(),et1.getText().toString(),d,t);
                 databaseUsers.push().setValue(temp);
-            }
-        });
-        downb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        upb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                et1.setText("");
             }
         });
 

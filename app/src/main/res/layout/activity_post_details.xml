@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
     android:fillViewport="true">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,26 +10,26 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#EEEEEE"
+            android:background="@drawable/layout_background_rounded_edge"
             android:layout_margin="8dp"
             android:id="@+id/r5">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:id="@+id/profile"
-                android:layout_margin="4dp"/>
+                android:layout_margin="4dp"
+                />
             <TextView
+                android:layout_toRightOf="@+id/profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sender"
+                android:text="Sender Omi"
                 android:id="@+id/t1"
-                android:layout_margin="4dp"
-                android:textSize="@dimen/activity_horizontal_margin"
-
+                android:padding="10dp"
+                android:textSize="20dp"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:paddingTop="8dp"
-                android:layout_toRightOf="@+id/profile"
                 />
 
             <TextView
@@ -38,33 +37,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="tag"
+                android:text="taggvhfggs"
+                android:paddingRight="10dp"
                 android:textColor="#000000"
                 android:layout_margin="4dp"/>
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date"
                 android:id="@+id/t2"
                 android:textColor="#000000"
                 android:layout_below="@+id/t1"
-                android:layout_margin="4dp"
+                android:layout_toRightOf="@+id/profile"
+                android:paddingRight="10dp"
+                android:layout_margin="0dp"
+                android:paddingLeft="15dp"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:text="Time"
                 android:textColor="#000000"
                 android:id="@+id/t3"
-                android:layout_below="@+id/t2"/>
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_below="@+id/t2"
+                android:layout_alignEnd="@+id/t2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="2dp"
+                android:layout_below="@+id/t3"
+                android:id="@+id/view" />
             <RelativeLayout
                 android:id="@+id/r1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:layout_below="@+id/t3"
-                android:background="#000000">
+                android:background="#00000000">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -76,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_keyboard_arrow_left_black_24dp"
                     android:layout_centerVertical="true"
+                    android:background="#00000000"
                     android:id="@+id/b1"
                     />
                 <ImageButton
@@ -83,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_keyboard_arrow_right_black_24dp"
                     android:layout_centerVertical="true"
+                    android:background="#00000000"
                     android:layout_alignParentEnd="true"
                     android:id="@+id/b2"/>
             </RelativeLayout>
@@ -96,6 +113,11 @@
                 android:layout_margin="4dp"
                 android:autoLink="all"
                 android:textColor="#000000"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         </RelativeLayout>
         <EditText
@@ -128,24 +150,6 @@
             android:src="@mipmap/ic_send_black_36dp"
             android:id="@+id/sendb"
             android:layout_alignParentEnd="true"
-            android:background="#ffffef"/>
-        <ImageButton
-            android:layout_marginRight="20dp"
-            android:layout_below="@+id/et1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_keyboard_arrow_up_black_36dp"
-            android:id="@+id/upb"
-            android:layout_toLeftOf="@+id/sendb"
-            android:background="#ffffef"/>
-        <ImageButton
-            android:layout_marginRight="20dp"
-            android:layout_below="@+id/et1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_keyboard_arrow_down_black_36dp"
-            android:id="@+id/downb"
-            android:layout_toLeftOf="@+id/upb"
             android:background="#ffffef"/>
 
         <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"

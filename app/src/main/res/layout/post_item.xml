@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:id="@+id/cv"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    app:cardBackgroundColor="#ff6128"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,8 +13,8 @@
         android:background="#FFFFEF"
         android:layout_marginTop="15dp">
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/profile"
             android:layout_margin="4dp"
             />
@@ -23,12 +24,11 @@
             android:layout_height="wrap_content"
             android:text="Sender Omi"
             android:id="@+id/t1"
-            android:layout_margin="4dp"
-            android:textSize="@dimen/activity_horizontal_margin"
+            android:padding="10dp"
+            android:textSize="20dp"
             android:textColor="#000000"
             android:textStyle="bold"
             android:paddingTop="8dp"
-
             />
 
         <TextView
@@ -37,12 +37,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="taggvhfggs"
+            android:paddingRight="10dp"
             android:textColor="#000000"
             android:layout_margin="4dp"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_details_black_24dp"
+            android:paddingRight="10dp"
             android:layout_below="@+id/t5"
             android:layout_alignParentEnd="true"
             android:background="#FFFFEF"
@@ -54,17 +56,32 @@
             android:text="Date"
             android:id="@+id/t2"
             android:textColor="#000000"
-            android:layout_below="@+id/profile"
-            android:layout_margin="4dp"
+            android:layout_below="@+id/t1"
+            android:layout_toRightOf="@+id/profile"
+            android:paddingRight="10dp"
+            android:layout_margin="0dp"
+            android:paddingLeft="15dp"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:text="Time"
             android:textColor="#000000"
             android:id="@+id/t3"
-            android:layout_below="@+id/t2"/>
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_below="@+id/t2"
+            android:layout_alignEnd="@+id/t2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
+            android:layout_below="@+id/t3"
+            android:id="@+id/view" />
+
         <RelativeLayout
             android:id="@+id/r1"
             android:layout_width="wrap_content"

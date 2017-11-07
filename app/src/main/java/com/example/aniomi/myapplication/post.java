@@ -141,19 +141,6 @@ public class post extends AppCompatActivity {
                 taken=0;
                 choose="Any";
 
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(post.this)
-                                .setSmallIcon(R.mipmap.ic_home_black_24dp)
-                                .setContentTitle("New Post")
-                                .setContentText(et1.getText().toString());
-
-                Intent notificationIntent = new Intent(post.this, MainActivity.class);
-                PendingIntent contentIntent = PendingIntent.getActivity(post.this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                builder.setContentIntent(contentIntent);
-
-                // Add as notification
-                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                manager.notify(0, builder.build());
-
                 et1.setText("");
             }
         });
