@@ -19,7 +19,7 @@
         android:id="@+id/r2">
     <ImageView
         android:layout_width="120dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:id="@+id/imageView"/>
     </RelativeLayout>
     <LinearLayout
