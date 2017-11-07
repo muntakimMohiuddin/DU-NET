@@ -23,8 +23,8 @@
         <item name="@android:style/Theme.NoTitleBar">true</item>
     </style>
 
-    <style name="NewTheme" parent="AppTheme.CustomThem" />
 
+    <style name="NewTheme" parent="AppTheme.CustomThem" />
     <style name="AppTheme_Dark_Dialog"></style>
 
 
