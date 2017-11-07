@@ -19,9 +19,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -47,6 +50,8 @@ import java.util.HashMap;
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
+import static com.example.aniomi.myapplication.Group_details.getContext;
+
 public class post extends AppCompatActivity {
     static int a[]=new int[100];
     static HashMap<String,String> hm= new HashMap<>();
@@ -56,13 +61,16 @@ public class post extends AppCompatActivity {
     ImageView imageView;
     private static final  int PICK_IMAGE_REQUEST=234;
     ArrayList<String> dept=new ArrayList<>();
+    ArrayList<String> picuris=new ArrayList<>();
     private Uri filePath;
     private StorageReference storageReference= FirebaseStorage.getInstance().getReference();;
     static int taken = 0;
     static String choose="Any";
     private EditText et1, et2;
     SpinnerDialog deptdialog;
+    ExpandableHeightGridView simpleList;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    TextView prev;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +82,15 @@ public class post extends AppCompatActivity {
         final ImageButton bl=findViewById(R.id.bl);
         final ImageButton b1, b2,time,date;
         imageView=(ImageView) findViewById(R.id.imageView);
+        simpleList = (ExpandableHeightGridView) findViewById(R.id.simpleGridView);
+        //uploaded_images_adapter myAdapter=new uploaded_images_adapter(getContext(),R.layout.activity_gridview,picuris);
+        //simpleList.setAdapter(myAdapter);
+        prev=findViewById(R.id.prev);
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         time = findViewById(R.id.bT);
         date = findViewById(R.id.bD);
+        prev.setVisibility(View.GONE);
         et1 = findViewById(R.id.et1);
         DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference().child("Posts");
         ds = databaseUsers.push();
@@ -216,6 +229,7 @@ public class post extends AppCompatActivity {
             }
         };
 
+
     }
     private void uploadFile() {
         //if there is a file to upload
@@ -235,6 +249,7 @@ public class post extends AppCompatActivity {
                             progressDialog.dismiss();
 
                             //and displaying a success toast
+                            Toast.makeText(getApplicationContext(),"Reach",Toast.LENGTH_SHORT);
 
                         }
                     })
@@ -277,6 +292,17 @@ public class post extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
+                picuris.clear();
+                for (int i=1;i<=taken;i++)
+                {
+                    picuris.add(postid+i);
+                }
+                Toast.makeText(getApplicationContext(),"Reach",Toast.LENGTH_LONG);
+                prev.setVisibility(View.VISIBLE);
+                uploaded_images_adapter myAdapter=new uploaded_images_adapter(getApplicationContext(),R.layout.uploaded_images,picuris);
+                simpleList.setAdapter(myAdapter);
+                simpleList.setExpanded(true);
+
                 //uploadFile();
 
             } catch (IOException e) {
