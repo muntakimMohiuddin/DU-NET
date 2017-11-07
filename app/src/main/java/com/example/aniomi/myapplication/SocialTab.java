@@ -24,6 +24,7 @@ public class SocialTab extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_social_tab, container, false);
            tabLayout=(TabLayout)v.findViewById(R.id.tabs);
+           getActivity().setTitle("SOCIAL");
            viewPager=(ViewPager)v.findViewById(R.id.viewpager);
            //set an adpater
 

@@ -30,10 +30,10 @@ public class BusTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_tab,null);
+        View v = inflater.inflate(R.layout.fragment_bus_tab,container,false);
         getActivity().setTitle("BUS");
         tabLayout=(TabLayout)v.findViewById(R.id.tabs);
-        viewPager=(ViewPager)v.findViewById(R.id.viewpager);
+        viewPager=(ViewPager)v.findViewById(R.id.container);
         //set an adpater
 
         viewPager.setAdapter(new BusTabAdapter( getChildFragmentManager()));
