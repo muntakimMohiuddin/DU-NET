@@ -274,6 +274,7 @@ public class BusTrackFinal extends AppCompatActivity implements GoogleApiClient.
 
     void getOut(){
         isActivityActive = false;
+        mGoogleApiClient.disconnect();
         finish();
     }
 }
