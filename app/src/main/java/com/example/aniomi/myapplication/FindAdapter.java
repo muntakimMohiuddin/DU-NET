@@ -18,12 +18,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static android.view.LayoutInflater.from;
+import static com.example.aniomi.myapplication.Students.lat;
+import static com.example.aniomi.myapplication.Students.lng;
 
 /**
  * Created by aniomi on 10/1/17.
@@ -33,8 +39,40 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
 
     private List<Students> list;
     private Context context;
+    DatabaseReference mDatabase;
+    HashMap<String ,String > hashMap = new HashMap<String, String>();
     public FindAdapter(List<Students> list,Context context) {
         this.list = list;this.context=context;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("ShareLocation").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String shareLocation = new String();
+                String id = new String();
+                id = dataSnapshot.getKey();
+                shareLocation = dataSnapshot.getValue(String.class);
+                hashMap.put(id,shareLocation);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public class sViewHolder extends RecyclerView.ViewHolder
@@ -145,11 +183,29 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
         holder.find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String words[] = temp.location.split(",");
-                Students.lat = Double.parseDouble(words[0]);
-                Students.lng = Double.parseDouble(words[1]);
-                Intent intent = new Intent(context,FindPeople.class);
-                context.startActivity(intent);
+                if(hashMap.containsKey(temp.getUid())) {
+                    if (hashMap.get(temp.getUid()).equals("true")) {
+                        String words[] = temp.location.split(",");
+                        lat = Double.parseDouble(words[0]);
+                        lng = Double.parseDouble(words[1]);
+                        Intent intent = new Intent(context, FindPeople.class);
+                        context.startActivity(intent);
+                    } else {
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                        builder2.setMessage("Access Not Granted");
+                        builder2.setCancelable(true);
+                        AlertDialog alert11 = builder2.create();
+                        alert11.show();
+                    }
+                }
+                else
+                {
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
+                    builder2.setMessage("Access Not Granted");
+                    builder2.setCancelable(true);
+                    AlertDialog alert11 = builder2.create();
+                    alert11.show();
+                }
             }
         });
 
