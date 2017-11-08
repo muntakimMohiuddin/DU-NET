@@ -14,7 +14,7 @@
         <item
             android:id="@+id/nav_gallery"
             android:title="Social"
-            android:icon="@drawable/ic_menu_social"/>
+            android:icon="@drawable/ic_social"/>
         <item
             android:id="@+id/nav_slideshow"
             android:title="Find department"
@@ -52,6 +52,7 @@
             <item
                 android:id="@+id/nav_share_location"
                 android:title="Share Location"
+                android:icon="@drawable/ic_share"
                 app:actionLayout="@layout/widget_check"/>
 
             <item
