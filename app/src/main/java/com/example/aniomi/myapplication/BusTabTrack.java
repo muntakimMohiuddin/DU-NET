@@ -30,10 +30,12 @@ public class BusTabTrack extends Fragment {
 
     static routTime selection;
     EditText busE,udE;
-    Button searchBus,trackBus;
+    Button searchBus,trackBus,nextTrip;
     TextView infoT,timeT;
     DatabaseReference db;
+    boolean firstViewed = false;
 
+    int count = 0;
     String time,selectedBus;
     static String selectedTime;
     final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh+mm+a");
@@ -44,6 +46,7 @@ public class BusTabTrack extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_bus_tab_track, container, false);
 
         Calendar c = Calendar.getInstance();
+        c.add(Calendar.MINUTE,-28);
         time = simpleDateFormat.format(c.getTime());
 
         infoT = (TextView) rootView.findViewById(R.id.bus_info);
@@ -53,8 +56,11 @@ public class BusTabTrack extends Fragment {
 
         searchBus = (Button) rootView.findViewById(R.id.search_bus_button);
         trackBus = (Button) rootView.findViewById(R.id.track_button);
+        nextTrip = (Button) rootView.findViewById(R.id.track_next);
+
 
         trackBus.setVisibility(View.INVISIBLE);
+        nextTrip.setVisibility(View.INVISIBLE);
 
         searchBus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +73,13 @@ public class BusTabTrack extends Fragment {
             @Override
             public void onClick(View v) {
                 trackSelectedBus();
+            }
+        });
+
+        nextTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextOrBack();
             }
         });
 
@@ -100,15 +113,32 @@ public class BusTabTrack extends Fragment {
                                 String[] tm = tmp.split("\\+");
                                 selectedBus = selection.getStartOrBus() +"\n"+ tm[0]+":"+tm[1]+" "+ tm[2] ;
                                 selectedTime = tm[0]+"+"+tm[1]+"+"+ tm[2];
+                                if(count==0 && firstViewed==false){
+                                    setText();
+                                    firstViewed = true;
+                                    trackBus.setVisibility(View.VISIBLE);
+                                    nextTrip.setVisibility(View.VISIBLE);
+                                    nextTrip.setText("NEXT");
+                                    count++;
+                                    break;
+                                } else if(count==0 && firstViewed==true){
+                                    count++;
+                                    continue;
+                                }else if(count==1 && firstViewed==true){
+                                    setText();
+                                    nextTrip.setText("BACK");
+                                    count++;
+                                    break;
+                                }
 
-                                setText();
-                                trackBus.setVisibility(View.VISIBLE);
-
-                                break;
                             }
                         } catch (Exception e){
                             Toast.makeText(getContext(),"ERROR",Toast.LENGTH_SHORT);
                         }
+                    }
+
+                    if(count == 0){
+                        infoT.setText("NO BUS IS AVAILABLE");
                     }
                 }
 
@@ -130,4 +160,16 @@ public class BusTabTrack extends Fragment {
     void setText(){
         infoT.setText(selectedBus);
     }
+
+    void nextOrBack(){
+        if(count==1){
+            count = 0;
+            searchForBus();
+        }else if(count ==2){
+            count = 0;
+            firstViewed = false;
+            searchForBus();
+        }
+    }
+
 }
