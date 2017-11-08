@@ -97,18 +97,7 @@
                 android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/et_address"
-                android:hint="Address"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/et_blood"
-                android:hint="Blood Group"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/b_update"
                 android:layout_width="wrap_content"

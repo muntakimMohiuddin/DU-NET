@@ -16,10 +16,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +44,8 @@ public class ProfileEdit extends Fragment {
     private Button b1,b2;
     private Uri filePath;
     private StorageReference storageReference;
+    private EditText t1,t2;
+    private Button button;
     public ProfileEdit() {
         // Required empty public constructor
     }
@@ -54,6 +59,26 @@ public class ProfileEdit extends Fragment {
         imageView=(ImageView) view.findViewById(R.id.imageView);
         b1=(Button) view.findViewById(R.id.b1);
         b2=(Button) view.findViewById(R.id.b2);
+        t1=view.findViewById(R.id.et_department);
+        t2=view.findViewById(R.id.et_year);
+        button=view.findViewById(R.id.b_update);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(t1.getText().toString()!=null && !t1.getText().toString().equals("") )
+                {
+                    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(Students.current.getUid()).child("dept");
+                    databaseReference.setValue(t1.getText().toString());
+                    Students.current.setDept(t1.getText().toString());
+                }
+                if(t2.getText().toString()!=null && !t2.getText().toString().equals("") )
+                {
+                    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(Students.current.getUid()).child("year");
+                    databaseReference.setValue(t2.getText().toString());
+                    Students.current.setYear(t2.getText().toString());
+                }
+            }
+        });
         storageReference= FirebaseStorage.getInstance().getReference();
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
