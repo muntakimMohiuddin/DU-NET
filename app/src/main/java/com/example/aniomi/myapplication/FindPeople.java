@@ -14,9 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class FindPeople extends AppCompatActivity implements OnMapReadyCallback {
 
-    GoogleMap googleMapRoute;
     MapFragment mapFragment;
-    DatabaseReference dbReference;
     GoogleMap mGoogleMap;
     Marker mCurrLocation;
 
@@ -27,18 +25,19 @@ public class FindPeople extends AppCompatActivity implements OnMapReadyCallback 
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
 
-        if(googleMapRoute==null){
+        if(mGoogleMap==null){
             mapFragment.getMapAsync(this);
-            LatLng latLngNew = new LatLng(/*Students.lat,Students.lng*/90.00,23.00);
-            mCurrLocation = googleMapRoute.addMarker(new MarkerOptions().position(latLngNew).title("Your Current Location"));
-            googleMapRoute.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngNew,17));
         }
 
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMapRoute = googleMap;
+        mGoogleMap = googleMap;
+
+        LatLng latLngNew = new LatLng(Students.lat,Students.lng);
+        mCurrLocation = mGoogleMap.addMarker(new MarkerOptions().position(latLngNew).title("Your Current Location"));
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngNew,17));
     }
 
 }

@@ -34,7 +34,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="180dp"
-            android:layout_height="225dp" />
+            android:layout_height="225dp"
+            android:src="@drawable/user_pp"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_below="@+id/r2"
@@ -61,7 +62,7 @@
 
         </RelativeLayout>
         <RelativeLayout
-
+            android:id="@+id/r7"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -76,8 +77,49 @@
                 />
         </RelativeLayout>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_below="@+id/r3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/et_department"
+                android:hint="Department"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/et_year"
+                android:hint="Year"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/et_address"
+                android:hint="Address"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/et_blood"
+                android:hint="Blood Group"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/b_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="UPDATE"
+                android:background="@drawable/button3"
+                android:textColor="#EEEEEE" />
+        </LinearLayout>
 
-
+    </RelativeLayout>
 
 </RelativeLayout>
 </ScrollView>
