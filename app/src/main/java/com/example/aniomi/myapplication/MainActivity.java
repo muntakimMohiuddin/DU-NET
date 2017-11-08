@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -123,8 +124,31 @@ public class MainActivity extends AppCompatActivity
         View v=navigationView.getHeaderView(0);
         ImageView imageView=v.findViewById(R.id.imageView);
         TextView gmail=v.findViewById(R.id.textView);
-        TextView name=v.findViewById(R.id.name);
-        name.setText(Students.current.getName() );
+        final TextView name=v.findViewById(R.id.name);
+        DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("Users");
+        databaseUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot users : dataSnapshot.getChildren())
+                {
+                    Students temp=users.getValue(Students.class);
+
+                    if(temp.getMail().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail()))
+                    {
+                        Students.current=temp;
+                        name.setText(temp.getName());
+                        break;
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         gmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         setImageFromStorage(getApplicationContext(),"images/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg",imageView);
 

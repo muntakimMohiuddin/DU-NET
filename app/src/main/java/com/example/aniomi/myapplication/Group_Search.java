@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Group_Search extends Fragment {
     private ImageButton drop,searchButton;
@@ -77,6 +78,7 @@ public class Group_Search extends Fragment {
 
                             recyclerView.setAdapter(adapter);
                         }
+                        Collections.reverse(groups);
                         Group_details.staticList = groups;
                     }
 
