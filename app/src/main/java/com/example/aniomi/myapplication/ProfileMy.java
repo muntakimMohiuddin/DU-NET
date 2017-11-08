@@ -78,6 +78,7 @@ public class ProfileMy extends Fragment {
                     //forestRef.getActiveUploadTasks();
                     Glide.with(getContext()).using(new FirebaseImageLoader())
                             .load(forestRef)
+                            .transform(new CircleTransform(getContext()))
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(imageView);
 
