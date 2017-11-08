@@ -101,6 +101,10 @@
         <activity
             android:name=".Group_post_comment"
             android:label="@string/title_activity_group_post_comment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FindPeople"
+            android:label="@string/title_activity_find_people"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

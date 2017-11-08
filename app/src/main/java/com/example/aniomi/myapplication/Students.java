@@ -14,6 +14,11 @@ public class Students {
     String location;
     String blood;
     String uid;
+
+
+    //static for Lat lng
+
+    static double lat , lng;
     public Students()
     {
         name=pass=mail=dept=year=location=blood=uid="Omi";location="0.00,0.00";

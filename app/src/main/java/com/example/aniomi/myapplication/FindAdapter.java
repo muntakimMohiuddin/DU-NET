@@ -5,6 +5,7 @@ package com.example.aniomi.myapplication;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,7 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
         public TextView text1,text2,text3,text4,text5,text6;
         public ImageButton rlay,b2;
         public CardView cv;
+        public Button find;
         ImageView profile;
         public sViewHolder(View itemView) {
             super(itemView);
@@ -50,6 +52,8 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
             text4=(TextView) itemView.findViewById(R.id.t5);
             text5=(TextView) itemView.findViewById(R.id.t6);
             text6=(TextView) itemView.findViewById(R.id.t7);
+            find = itemView.findViewById(R.id.button3);
+
             profile=itemView.findViewById(R.id.profile);
             rlay= itemView.findViewById(R.id.b1);
             b2=itemView.findViewById(R.id.b2);
@@ -135,6 +139,17 @@ public class FindAdapter  extends RecyclerView.Adapter<FindAdapter.sViewHolder>{
                 mBuilder.setView(mView);
                 AlertDialog alertDialog=mBuilder.create();
                 alertDialog.show();
+            }
+        });
+
+        holder.find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String words[] = temp.location.split(",");
+                Students.lat = Double.parseDouble(words[0]);
+                Students.lng = Double.parseDouble(words[1]);
+                Intent intent = new Intent(context,FindPeople.class);
+                context.startActivity(intent);
             }
         });
 
