@@ -260,7 +260,7 @@ public class BusTrackFinal extends AppCompatActivity implements GoogleApiClient.
     public void drawPolyline(ArrayList<LatLng> arg){
         PolylineOptions polylineOptions = new PolylineOptions();
         polylineOptions.addAll(arg);
-        polylineOptions.width(5).color(Color.BLUE);
+        polylineOptions.width(6).color(Color.CYAN);
         mGoogleMap.addPolyline( polylineOptions );
     }
 
