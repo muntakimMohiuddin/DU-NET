@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView=v.findViewById(R.id.imageView);
         TextView gmail=v.findViewById(R.id.textView);
         TextView name=v.findViewById(R.id.name);
-        name.setText(Students.current.name);
+        name.setText(Students.current.getName());
         gmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         setImageFromStorage(getApplicationContext(),"images/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg",imageView);
 
