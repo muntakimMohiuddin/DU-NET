@@ -124,7 +124,7 @@ public class Location implements GoogleApiClient.ConnectionCallbacks,
     void keepLocationUpdated(){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
-        final String userID = Students.current.getUid();
+        final String userID = mAuth.getCurrentUser().getUid();
         mDatabase.child(userID).child("location").setValue(lat+","+lng);
        // Toast.makeText(context, "HIIIIIIIIIII", Toast.LENGTH_SHORT).show();
     }
