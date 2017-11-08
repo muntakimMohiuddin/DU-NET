@@ -40,13 +40,25 @@ public class FindDepartment extends AppCompatActivity implements OnMapReadyCallb
     ArrayList<String> deptNames = new ArrayList<>();
     static String selectedDept="";
 
-    DatabaseReference dbReference;
+    DatabaseReference dbReference,dbLoad;
 
     void load(){
-        String d[] = {"CSE","EEE","Microbiology"};
-        for (int i = 0; i <d.length ; i++) {
-            deptNames.add(d[i]);
-        }
+
+        dbLoad = FirebaseDatabase.getInstance().getReference("Departments");
+        dbLoad.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot objectSnap : dataSnapshot.getChildren()){
+                    String data = objectSnap.getKey();
+                    deptNames.add(data);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -117,7 +129,7 @@ public class FindDepartment extends AppCompatActivity implements OnMapReadyCallb
                 }
 
                 mCurrLocation = googleMapRoute.addMarker(new MarkerOptions().position(markerPoint).title(selectedDept));
-                googleMapRoute.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPoint,15));
+                googleMapRoute.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPoint,18));
             }
 
             @Override
@@ -130,5 +142,7 @@ public class FindDepartment extends AppCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
         googleMapRoute = googleMap;
+        //googleMapRoute.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        googleMapRoute.setBuildingsEnabled(false);
     }
 }
