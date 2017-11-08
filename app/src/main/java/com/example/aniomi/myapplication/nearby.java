@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class nearby extends Fragment implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,LocationListener{
@@ -63,6 +64,9 @@ public class nearby extends Fragment implements GoogleApiClient.ConnectionCallba
     SupportMapFragment mFragment;
     Marker mCurrLocation;
 
+    HashMap<String ,String > hashMap = new HashMap<String, String>();
+    LocationHashmap locationHashmap = new LocationHashmap();
+
     public nearby(){
         //
     }
@@ -76,6 +80,8 @@ public class nearby extends Fragment implements GoogleApiClient.ConnectionCallba
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getContext(), "Location Not Granted", Toast.LENGTH_SHORT).show();
         }
+
+       // hashMap = locationHashmap.hash();
         buildGoogleApiClient();
         return v;
     }
@@ -95,29 +101,63 @@ public class nearby extends Fragment implements GoogleApiClient.ConnectionCallba
         mDatabase.child(userID).child("location").setValue(lat+","+lng);
         studentList.clear();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("ShareLocation").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String shareLocation = new String();
+                String id = new String();
+                id = dataSnapshot.getKey();
+                shareLocation = dataSnapshot.getValue(String.class);
+                hashMap.put(id,shareLocation);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         mDatabase.child("Users").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                 Students temp=new Students();
                 temp = dataSnapshot.getValue(Students.class);
+                String id = dataSnapshot.getKey();
 
-                Location A = new Location("");
-                A.setLatitude(lat);
-                A.setLongitude(lng);
-                Location B = new Location("");
-                String words[] = temp.location.split(",");
-                B.setLatitude(Double.parseDouble(words[0]));
-                B.setLongitude(Double.parseDouble(words[1]));
+                if(hashMap.containsKey(id))
+                if(hashMap.get(id).equals("true")){
+                    Location A = new Location("");
+                    A.setLatitude(lat);
+                    A.setLongitude(lng);
+                    Location B = new Location("");
+                    String words[] = temp.location.split(",");
+                    B.setLatitude(Double.parseDouble(words[0]));
+                    B.setLongitude(Double.parseDouble(words[1]));
 
-                float dist = A.distanceTo(B);
+                    float dist = A.distanceTo(B);
 
-                if(dist < 1000.00 && !userID.equals(temp.uid))
-                {
-                    studentList.add(temp);
+                    if(dist < 1000.00 && !userID.equals(temp.uid))
+                    {
+                        studentList.add(temp);
+                    }
+                    nearbyAdapter myAdapter=new nearbyAdapter(getContext(),R.layout.activity_gridview,studentList);
+                    simpleList.setAdapter(myAdapter);
                 }
-                nearbyAdapter myAdapter=new nearbyAdapter(getContext(),R.layout.activity_gridview,studentList);
-                simpleList.setAdapter(myAdapter);
             }
 
             @Override
