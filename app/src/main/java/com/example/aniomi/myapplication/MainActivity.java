@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
     CompoundButton compoundButton;
 
     DatabaseReference mDatabase;
+    Event_Search event_search = new Event_Search();
     static void setImageFromStorage(Context context,String uri,ImageView imageView)
     {
         StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView=v.findViewById(R.id.imageView);
         TextView gmail=v.findViewById(R.id.textView);
         TextView name=v.findViewById(R.id.name);
-        name.setText(Students.current.getName());
+        name.setText(Students.current.getName() );
         gmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         setImageFromStorage(getApplicationContext(),"images/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg",imageView);
 
@@ -208,7 +209,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "DONE", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.Search) {
-            Event_Search event_search = new Event_Search(MainActivity.this);
+            event_search.Search(MainActivity.this);
         }
         else if(id == R.id.creat_group)
         {

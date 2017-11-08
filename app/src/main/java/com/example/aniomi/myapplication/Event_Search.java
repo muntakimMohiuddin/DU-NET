@@ -45,7 +45,32 @@ public class Event_Search{
     ArrayList<String> not_interested=new ArrayList<>();
     ArrayList<String> interested=new ArrayList<>();
 
-        Event_Search(final Context context) {
+    Event_Search(){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Events");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listName.clear();
+                listEvent.clear();
+                for (DataSnapshot users : dataSnapshot.getChildren()) {
+                    EventDetails temp = new EventDetails();
+                    temp = users.getValue(EventDetails.class);
+                    String key = dataSnapshot.getKey();
+                    if (!temp.eventName.equals("")) {
+                        listEvent.add(temp);
+                        listName.add(temp.eventName);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+        public void Search(final Context context) {
             mDatabase = FirebaseDatabase.getInstance().getReference().child("Events");
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -358,7 +383,8 @@ public class Event_Search{
                     builder2.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialogInterface) {
-                            Event_Search event_search = new Event_Search(context);
+                            Event_Search event_search = new Event_Search();
+                            event_search.Search(context);
                         }
                     });
 
