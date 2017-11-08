@@ -125,14 +125,7 @@ public class Group_post extends AppCompatActivity {
             }
         });
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.myFAB);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Group_post.this , Group_post_creat.class);
-                startActivity(intent);
-            }
-        });*/
+
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -141,9 +134,10 @@ public class Group_post extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(Students.current.getUid().equals(Group_details.toperner))
-            getMenuInflater().inflate(R.menu.creat_post, menu);
+        if(Students.current.getUid().equals(Group_details.toperner)) {
+            //getMenuInflater().inflate(R.menu.creat_post, menu);
 
+        }
         return true;
     }
 
@@ -152,9 +146,13 @@ public class Group_post extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_post_creat) {
-            Group_details.edit = true;
-            Intent intent = new Intent(Group_post.this , Group_post_creat.class);
-            startActivity(intent);
+            /*Group_details.edit = true;
+            Group_creat fragment=new Group_creat();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            invalidateOptionsMenu();*/
         }
         return true;
     }

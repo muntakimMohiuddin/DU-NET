@@ -223,11 +223,6 @@ public class MainActivity extends AppCompatActivity
         {
             Group_details.Creat_Group(MainActivity.this);
         }
-        else if(id == R.id.add_book)
-        {
-            /*Intent my=new Intent(this,Add_book.class);
-            startActivity(my);*/
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -325,45 +320,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             invalidateOptionsMenu();
-        }
-        else if(id == R.id.nav_share_location)
-        {
-            /*compoundButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if(compoundButton.isChecked()){
-                        mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                        final String userID = Students.current.getUid();
-                        String t = "true";
-                        mDatabase.child(userID).setValue(t);
-                        Location location = new Location(MainActivity.this);
-                        location.getLocation();
-                    }
-                    else{
-                        mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                        final String userID = Students.current.getUid();
-                        String t = "false";
-                        mDatabase.child(userID).setValue(t);
-                        Toast.makeText(MainActivity.this, "FALSE", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-*/
-            if(compoundButton.isChecked()){
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                final String userID = Students.current.getUid();
-                String t = "true";
-                mDatabase.child(userID).setValue(t);
-                Location location = new Location(MainActivity.this);
-                location.getLocation();
-            }
-            else{
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                final String userID = Students.current.getUid();
-                String t = "false";
-                mDatabase.child(userID).setValue(t);
-                Toast.makeText(MainActivity.this, "FALSE", Toast.LENGTH_SHORT).show();
-            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

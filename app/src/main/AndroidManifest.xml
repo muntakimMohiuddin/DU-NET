@@ -58,7 +58,6 @@
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Add_book"
             android:label="@string/title_activity_scrolling"
@@ -79,8 +78,9 @@
         <activity android:name=".activity_bus" />
         <activity android:name=".Adapter" />
         <activity android:name=".BusList" />
-        <activity android:name=".BusTrackFinal"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".BusTrackFinal"
+            android:screenOrientation="portrait" />
         <activity android:name=".FindDepartment" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".SearchBus" />
@@ -98,7 +98,10 @@
             android:label="@string/title_activity_group_post_creat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Group_People" />
-
+        <activity
+            android:name=".Group_post_comment"
+            android:label="@string/title_activity_group_post_comment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

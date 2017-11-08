@@ -16,13 +16,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
 import static com.example.aniomi.myapplication.Group_details.tfilePath;
+import static com.example.aniomi.myapplication.Group_details.tgroupID;
 
 public class Group_creat extends Fragment {
 
@@ -44,9 +50,26 @@ public class Group_creat extends Fragment {
         adminPass = view.findViewById(R.id.adminPass);
         userPass = view.findViewById(R.id.userPass);
 
+
+        if(Group_details.edit == true)
+        {
+            name.setText(Group_details.tname);
+            about.setText(Group_details.tabout);
+            adminPass.setText(Group_details.tadminPass);
+            userPass.setText(Group_details.tuserPass);
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+            StorageReference forestRef = storageRef.child("GROUPimages/"+Group_details.tgroupID+".jpg");
+            Glide.with(getContext()).using(new FirebaseImageLoader())
+                    .load(forestRef)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .transform(new CircleTransform(getContext()))
+                    .into(photo);
+            Group_details.edit = false;
+        }
+
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Groups");
-        Group_details.tgroupID = mDatabase.push().getKey();
+        tgroupID = mDatabase.push().getKey();
 
         photo.setOnClickListener(new View.OnClickListener() {
             @Override

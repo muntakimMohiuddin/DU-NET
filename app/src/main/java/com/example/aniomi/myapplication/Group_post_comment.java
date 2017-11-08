@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class post_details extends AppCompatActivity {
+public class Group_post_comment extends AppCompatActivity {
     int current=1;
     static posto currentpost=new posto();
     private ImageButton b1,b2,sendb,upb,downb;
@@ -51,7 +51,7 @@ public class post_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_details);
+        setContentView(R.layout.activity_group_post_comment);
         total=Integer.parseInt(currentpost.cnt);
         b1=findViewById(R.id.b1);
         b2=findViewById(R.id.b2);
@@ -64,21 +64,12 @@ public class post_details extends AppCompatActivity {
         t5=findViewById(R.id.t5);
         et1=findViewById(R.id.et1);
         t1.setText(currentpost.getSen());
-        t2.setText(currentpost.getD());
-        t3.setText(currentpost.getT());
         t3.setVisibility(View.GONE);
-        t5.setText(currentpost.getDept());
         t4.setText(currentpost.getDescription());
         imageView=findViewById(R.id.imageView);
         recyclerView=findViewById(R.id.recycler);
         ImageView profile=findViewById(R.id.profile);
-
-        if(Group_details.groupPost == true){
-            t5.setVisibility(View.GONE);
-            MainActivity.setImageFromStorage(getApplicationContext(),"images/"+t3.getText().toString()+".jpg",profile);
-            Group_details.groupPost = false;
-        }
-        MainActivity.setImageFromStorage(getApplicationContext(),"images/"+t3.getText().toString()+".jpg",profile);
+        MainActivity.setImageFromStorage(getApplicationContext(),"images/"+currentpost.getDept()+".jpg",profile);
         final DatabaseReference databaseUsers= FirebaseDatabase.getInstance().getReference().child("comments").child(currentpost.getId());
         databaseUsers.addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,7 +91,7 @@ public class post_details extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                     }
 
-                    }
+                }
             }
 
             @Override
@@ -135,14 +126,21 @@ public class post_details extends AppCompatActivity {
             }
         });
 
-        if(total!=0){
-            MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"POSTimages/"+currentpost.id+1+".jpg",imageView);
+        if(total != 0){
+            if(total == 1)
+            {
+                View B=b1;
+                B.setVisibility(View.GONE);
+                B=b2;
+                B.setVisibility(View.GONE);
+            }
+            MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"Group_post_image/"+currentpost.id+1+".jpg",imageView);
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(current==1) current=total;
                     else current--;
-                    MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"POSTimages/"+currentpost.id+(current)+".jpg",imageView);
+                    MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"Group_post_image/"+currentpost.id+(current)+".jpg",imageView);
                 }
             });
             b2.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +148,7 @@ public class post_details extends AppCompatActivity {
                 public void onClick(View view) {
                     if(current==total) current=1;
                     else current++;
-                    MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"POSTimages/"+currentpost.id+(current)+".jpg",imageView);
+                    MainActivity.setImageFromStorageNonCircle(getApplicationContext(),"Group_post_image/"+currentpost.id+(current)+".jpg",imageView);
                 }
             });
         }
@@ -166,3 +164,4 @@ public class post_details extends AppCompatActivity {
 
     }
 }
+

@@ -24,51 +24,54 @@ import java.util.List;
  * Created by aniomi on 10/1/17.
  */
 
-public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter.sViewHolder>{
+public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter.sViewHolder> {
 
     private List<posto> list;
     private Context context;
 
-    public Group_post_adapter(List<posto> list,Context context) {
-        this.list = list;this.context=context;
+    public Group_post_adapter(List<posto> list, Context context) {
+        this.list = list;
+        this.context = context;
     }
 
-    public class sViewHolder extends RecyclerView.ViewHolder
-    {
-        public TextView t1,t2,t3,t4,t5;
-        public ImageView imageView,pic,image;
-        public ImageButton b1,b2,imdb,edit;
-        int cp=1,cnt;
+    public class sViewHolder extends RecyclerView.ViewHolder {
+        public TextView t1, t2, t3, t4, t5;
+        public ImageView imageView, pic, image;
+        public ImageButton b1, b2, imdb, edit;
+        int cp = 1, cnt;
         public CardView cv;
+
         public sViewHolder(View itemView) {
             super(itemView);
-            t1=(TextView) itemView.findViewById(R.id.t1);
-            t2=(TextView) itemView.findViewById(R.id.t2);
-            t3=(TextView) itemView.findViewById(R.id.t3);
-            t4=(TextView) itemView.findViewById(R.id.t4);
-            t5=(TextView) itemView.findViewById(R.id.t5);
-            b1=itemView.findViewById(R.id.b1);
-            b2=itemView.findViewById(R.id.b2);
-            imdb=itemView.findViewById(R.id.imdb);
-            imageView=itemView.findViewById(R.id.imageView);
-            cv=(CardView) itemView.findViewById(R.id.cv);
-            image= (ImageView) itemView.findViewById(R.id.pic);
+            t1 = (TextView) itemView.findViewById(R.id.t1);
+            t2 = (TextView) itemView.findViewById(R.id.t2);
+            t3 = (TextView) itemView.findViewById(R.id.t3);
+            t4 = (TextView) itemView.findViewById(R.id.t4);
+            t5 = (TextView) itemView.findViewById(R.id.t5);
+            b1 = itemView.findViewById(R.id.b1);
+            b2 = itemView.findViewById(R.id.b2);
+            imdb = itemView.findViewById(R.id.imdb);
+            imageView = itemView.findViewById(R.id.imageView);
+            cv = (CardView) itemView.findViewById(R.id.cv);
+            image = (ImageView) itemView.findViewById(R.id.pic);
             edit = itemView.findViewById(R.id.edit);
+            imdb.setVisibility(View.GONE);
         }
 
 
     }
+
     @Override
     public sViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item_group,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item_group, parent, false);
         return new sViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(final sViewHolder holder, final int position) {
 
-        final posto temp=list.get(position);
-        holder.cnt=Integer.parseInt(temp.getCnt());
+        final posto temp = list.get(position);
+        holder.cnt = Integer.parseInt(temp.getCnt());
 
         //holder.setIsRecyclable(false);
         //holder.text4.setText("Send");
@@ -76,117 +79,106 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
         //holder.t2.setText(temp.getD());
         //holder.t3.setText(temp.getT());
         holder.t4.setText(temp.getDescription());
-       // holder.t5.setText(temp.getDept());
+        // holder.t5.setText(temp.getDept());
 
         StorageReference storageRef;
         StorageReference forestRef;
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final String userID = Students.current.getUid();
 
-        if(userID.equals(temp.dept))
+        if (userID.equals(temp.dept))
             holder.edit.setVisibility(View.VISIBLE);
         else
             holder.edit.setVisibility(View.INVISIBLE);
 
         storageRef = FirebaseStorage.getInstance().getReference();
-        forestRef = storageRef.child("images/"+temp.getDept()+".jpg");
+        forestRef = storageRef.child("images/" + temp.getDept() + ".jpg");
         Glide.with(context).using(new FirebaseImageLoader())
                 .load(forestRef)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(new CircleTransform(context))
                 .into(holder.image);
 
-        if(holder.cnt==0)
-        {
+        if (holder.cnt == 0) {
             holder.b1.setVisibility(View.GONE);
             holder.b2.setVisibility(View.GONE);
             holder.imageView.setVisibility(View.GONE);
-        }
-        else
-        {
-            if(holder.cnt == 1)
-            {
+        } else {
+            if (holder.cnt == 1) {
                 holder.b1.setVisibility(View.GONE);
                 holder.b2.setVisibility(View.GONE);
-            }
-            else
-            {
+            } else {
                 holder.b1.setVisibility(View.VISIBLE);
                 holder.b2.setVisibility(View.VISIBLE);
             }
             holder.imageView.setVisibility(View.VISIBLE);
             storageRef = FirebaseStorage.getInstance().getReference();
-            forestRef = storageRef.child("Group_post_image/"+temp.id+(posto.b[position]+1)+".jpg");
+            forestRef = storageRef.child("Group_post_image/" + temp.id + (posto.b[position] + 1) + ".jpg");
             Glide.with(context).using(new FirebaseImageLoader())
                     .load(forestRef)
                     .into(holder.imageView);
             holder.b1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(posto.b[position]+1==1)
-                    {
-                        posto.b[position]=posto.b[position]-1;
-                    }
-
-                    else posto.b[position]--;
+                    if (posto.b[position] + 1 == 1) {
+                        posto.b[position] = posto.b[position] - 1;
+                    } else posto.b[position]--;
                     StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
                     StorageReference forestRef;
 
                     storageRef = FirebaseStorage.getInstance().getReference();
-                    forestRef = storageRef.child("Group_post_image/"+temp.id+(posto.b[position]+1)+".jpg");
+                    forestRef = storageRef.child("Group_post_image/" + temp.id + (posto.b[position] + 1) + ".jpg");
                     Glide.with(context).using(new FirebaseImageLoader())
                             .load(forestRef)
                             .into(holder.imageView);
 
-                }
-            });
-
-            holder.b2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(posto.b[position]+1==holder.cnt)
-                    {
-                        posto.b[position]=0;
-                    }
-
-                    else posto.b[position]++;
-
-                    StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-                    StorageReference forestRef;
-
-                    storageRef = FirebaseStorage.getInstance().getReference();
-                    forestRef = storageRef.child("Group_post_image/"+temp.id+(posto.b[position]+1)+".jpg");
-                    Glide.with(context).using(new FirebaseImageLoader())
-                            .load(forestRef)
-                            .into(holder.imageView);
-
-                }
-            });
-            holder.imdb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    post_details.currentpost=temp;
-                    Intent my=new Intent(context,post_details.class);
-                    context.startActivity(my);
                 }
             });
         }
 
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                posto.ttext = holder.t4.getText().toString();
-                Intent intent = new Intent(context , Group_post_creat.class);
-                context.startActivity(intent);
-            }
-        });
+            holder.b2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (posto.b[position] + 1 == holder.cnt) {
+                        posto.b[position] = 0;
+                    } else posto.b[position]++;
 
+                    StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
+                    StorageReference forestRef;
+
+                    storageRef = FirebaseStorage.getInstance().getReference();
+                    forestRef = storageRef.child("Group_post_image/" + temp.id + (posto.b[position] + 1) + ".jpg");
+                    Glide.with(context).using(new FirebaseImageLoader())
+                            .load(forestRef)
+                            .into(holder.imageView);
+
+                }
+            });
+
+
+            holder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    posto.ttext = holder.t4.getText().toString();
+                    Intent intent = new Intent(context, Group_post_creat.class);
+                    context.startActivity(intent);
+                }
+            });
+
+            holder.cv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Group_post_comment.currentpost = temp;
+                    Group_details.groupPost = true;
+                    Intent my = new Intent(context, Group_post_comment.class);
+                    context.startActivity(my);
+                }
+            });
 
     }
+        @Override
+        public int getItemCount() {
+            return list.size();
+        }
 
-    @Override
-    public int getItemCount() {
-        return list.size();
     }
-
-}

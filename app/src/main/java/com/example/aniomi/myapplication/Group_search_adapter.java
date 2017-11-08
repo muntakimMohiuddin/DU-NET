@@ -71,7 +71,7 @@ public class Group_search_adapter extends RecyclerView.Adapter<Group_search_adap
         Glide.with(context).using(new FirebaseImageLoader())
                 .load(forestRef)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                //.transform(new CircleTransform(context))
+                .transform(new CircleTransform(context))
                 .into(holder.image);
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override

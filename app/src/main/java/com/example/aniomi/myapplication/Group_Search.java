@@ -46,6 +46,8 @@ public class Group_Search extends Fragment {
         cardView = (CardView)  view.findViewById(R.id.cvSearch);
         final Group_search_adapter adapter=new Group_search_adapter(groups);
 
+
+
         text50.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -66,18 +68,6 @@ public class Group_Search extends Fragment {
                             String  t = null;
                             temp=users.getValue(Group_details.class);
                             t = temp.getName();
-
-                            /*if(searchField[0] == "Name")
-                                t = temp.getName();
-                            else if(searchField[0] == "Department")
-                                t = temp.getDept();
-                            else if(searchField[0] == "Year")
-                                t = temp.getYear();
-                            else if(searchField[0] == "Blood Group")
-                                t = temp.getBlood();
-                            else if(searchField[0] == "Location")
-                                t = temp.getLoc();*/
-
                             t = t.toLowerCase();
                             string[0] = string[0].toLowerCase();
                             if(t.indexOf(string[0]) != -1)

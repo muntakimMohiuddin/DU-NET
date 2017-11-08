@@ -71,6 +71,7 @@ public class nearby extends Fragment implements GoogleApiClient.ConnectionCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.activity_nearby, container, false);
+        getActivity().setTitle("NEARBY");
         simpleList = (GridView) v.findViewById(R.id.simpleGridView);
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getContext(), "Location Not Granted", Toast.LENGTH_SHORT).show();

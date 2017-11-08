@@ -95,13 +95,6 @@ public class Group_post_creat extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-                DateFormat dateFormat1 = new SimpleDateFormat("HH:mm:ss");
-                Date date = new Date();
-                Date date1 = new Date();
-                String d,t;
-                d=(String)dateFormat.format(date);
-                t=(String)dateFormat1.format(date1);*/
                 posto temp=new posto(postid,taken+"",Students.current.getName(),Students.current.getUid(),et1.getText().toString());
                 ds.setValue(temp);
                 taken=0;

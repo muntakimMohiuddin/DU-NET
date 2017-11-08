@@ -32,6 +32,7 @@ public class Group_details implements Serializable{
     public static Uri tfilePath;
     public static List<Group_details> staticList;
     public static boolean edit ;
+    static boolean groupPost ;
 
     Group_details(String name , String about , String  operner ,String adminPass ,String userPass,String groupID)
     {
