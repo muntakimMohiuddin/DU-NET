@@ -109,5 +109,30 @@
                 />
         </LinearLayout>
 
+        <com.example.aniomi.myapplication.ExpandableHeightGridView
+            android:layout_below="@+id/l2"
+            android:id="@+id/simpleGridView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:horizontalSpacing="0dip"
+            android:verticalSpacing="0dip"
+            android:adjustViewBounds="true"
+            android:numColumns="3"
+
+
+            />
+        <TextView
+            android:layout_below="@+id/simpleGridView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Previous Uploads"
+            android:id="@+id/prev"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#000000"/>
+
     </RelativeLayout>
 </ScrollView>

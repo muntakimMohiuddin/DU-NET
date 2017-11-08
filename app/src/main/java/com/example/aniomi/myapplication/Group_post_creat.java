@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +38,7 @@ public class Group_post_creat extends AppCompatActivity {
 
     static int a[]=new int[100];
     static HashMap<String,String> hm= new HashMap<>();
+    ArrayList<String> picuris=new ArrayList<>();
     int request_Code = 1 ;
     DatabaseReference ds;
     String postid;
@@ -49,12 +51,15 @@ public class Group_post_creat extends AppCompatActivity {
     static String choose="Any";
     private EditText et1, et2;
     SpinnerDialog deptdialog;
+    ExpandableHeightGridView simpleList;
+    TextView prev;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_post_creat);
 
+        simpleList = (ExpandableHeightGridView) findViewById(R.id.simpleGridView);
         final ImageButton button = findViewById(R.id.bc);
         final ImageButton b1, b2,time,date;
         imageView=(ImageView) findViewById(R.id.imageView);
@@ -63,6 +68,8 @@ public class Group_post_creat extends AppCompatActivity {
         et1 = findViewById(R.id.et1);
         et1.setText(posto.ttext);
         posto.ttext = "";
+        prev=findViewById(R.id.prev);
+        prev.setVisibility(View.GONE);
         DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference().child("Group_post").child(Group_details.tgroupID);
         ds = databaseUsers.push();
 
@@ -156,6 +163,17 @@ public class Group_post_creat extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
+                picuris.clear();
+                for (int i=1;i<=taken;i++)
+                {
+                    picuris.add(postid+i);
+                }
+                Toast.makeText(getApplicationContext(),"Reach",Toast.LENGTH_LONG);
+                prev.setVisibility(View.VISIBLE);
+                uploaded_images_adapter myAdapter=new uploaded_images_adapter(getApplicationContext(),R.layout.uploaded_images,picuris);
+                simpleList.setAdapter(myAdapter);
+                simpleList.setExpanded(true);
+
                 //uploadFile();
 
             } catch (IOException e) {
