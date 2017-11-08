@@ -169,7 +169,6 @@ public class MainActivity extends AppCompatActivity
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()){
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                    final String userID = Students.current.getUid();
                     String t = "true";
                     mDatabase.child(userID).setValue(t);
                     Location location = new Location(MainActivity.this);
@@ -177,7 +176,6 @@ public class MainActivity extends AppCompatActivity
                 }
                 else{
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("ShareLocation");
-                    final String userID = Students.current.getUid();
                     String t = "false";
                     mDatabase.child(userID).setValue(t);
                 }
