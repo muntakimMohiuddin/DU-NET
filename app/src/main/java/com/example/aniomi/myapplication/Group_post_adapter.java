@@ -2,6 +2,7 @@ package com.example.aniomi.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -172,6 +178,60 @@ public class Group_post_adapter  extends RecyclerView.Adapter<Group_post_adapter
                     Group_details.groupPost = true;
                     Intent my = new Intent(context, Group_post_comment.class);
                     context.startActivity(my);
+                }
+            });
+
+            holder.t1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
+                    final View mView=LayoutInflater.from(context).inflate(R.layout.fragment_profile_my,null);
+                    final ImageView imageView=(ImageView) mView.findViewById(R.id.imageView);
+                    MainActivity.setImageFromStorage(context,"images/"+temp.getDept()+".jpg",imageView);
+                    final TextView t1,t2,t3,t4,t5;
+                    t1=mView.findViewById(R.id.t1);
+                    t2=mView.findViewById(R.id.t2);
+                    t3=mView.findViewById(R.id.t3);
+                    t4=mView.findViewById(R.id.t4);
+                    t5=mView.findViewById(R.id.t5);
+                    t5.setVisibility(View.GONE);
+
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mDatabase.child("Users").addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            Students tempStudent=new Students();
+                            tempStudent=dataSnapshot.getValue(Students.class);
+                            if(tempStudent.getUid().equals(temp.getDept())){
+                                t1.setText(tempStudent.name);
+                                t2.setText(tempStudent.dept);
+                                t3.setText(tempStudent.year+" Year");
+                                t4.setText("Blood Group : "+tempStudent.blood);
+                            }
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    mBuilder.setView(mView);
+                    AlertDialog alertDialog=mBuilder.create();
+                    alertDialog.show();
                 }
             });
 

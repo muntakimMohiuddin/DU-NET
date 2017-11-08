@@ -12,7 +12,7 @@
         android:id="@+id/tabs"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        android:background="#808080"
+        android:background="@color/colorPrimary"
         app:tabIndicatorColor="#FFA500"
         app:tabSelectedTextColor="#FFA500"
         app:tabTextColor="#ffffff"

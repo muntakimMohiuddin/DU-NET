@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -33,10 +34,12 @@ import java.util.ArrayList;
 public class nearbyAdapter extends ArrayAdapter {
 
     ArrayList<Students> studentList=new ArrayList<>();
+    Context context;
 
     public nearbyAdapter(Context context, int textViewResourceId, ArrayList objects) {
         super(context, textViewResourceId, objects);
         studentList = objects;
+        this.context = context;
     }
 
     @Override
@@ -54,15 +57,14 @@ public class nearbyAdapter extends ArrayAdapter {
         ImageButton imbdb=(ImageButton) v.findViewById(R.id.imageButton);
         TextView textView = (TextView) v.findViewById(R.id.textView);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+        RelativeLayout relativeLayout = v.findViewById(R.id.grid_view_items);
         textView.setText(studentList.get(position).name);
         imbdb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(getContext());
                 final View mView=LayoutInflater.from(getContext()).inflate(R.layout.activity_popupfind,null);
-
                 final Students temp=studentList.get(position);
-
                 final EditText ett=(EditText) mView.findViewById(R.id.et2);
                 Button send=(Button) mView.findViewById(R.id.b9);
 
@@ -94,6 +96,31 @@ public class nearbyAdapter extends ArrayAdapter {
                 .load(forestRef)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(imageView);
+
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder=new AlertDialog.Builder(context);
+                final View mView=LayoutInflater.from(context).inflate(R.layout.fragment_profile_my,null);
+                final ImageView imageView=(ImageView) mView.findViewById(R.id.imageView);
+                MainActivity.setImageFromStorage(context,"images/"+studentList.get(position).uid+".jpg",imageView);
+                TextView t1,t2,t3,t4,t5;
+                t1=mView.findViewById(R.id.t1);
+                t2=mView.findViewById(R.id.t2);
+                t3=mView.findViewById(R.id.t3);
+                t4=mView.findViewById(R.id.t4);
+                t5=mView.findViewById(R.id.t5);
+                t5.setVisibility(View.GONE);
+                t1.setText(studentList.get(position).name);
+                t2.setText(studentList.get(position).dept);
+                t3.setText(studentList.get(position).year+" Year");
+                t4.setText("Blood Group : "+studentList.get(position).blood);
+               // t5.setText("location : "+holder.text6.getText().toString());
+                mBuilder.setView(mView);
+                AlertDialog alertDialog=mBuilder.create();
+                alertDialog.show();
+            }
+        });
         return v;
 
     }
