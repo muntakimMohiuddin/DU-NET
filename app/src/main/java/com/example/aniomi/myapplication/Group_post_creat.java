@@ -170,7 +170,7 @@ public class Group_post_creat extends AppCompatActivity {
                 }
                 Toast.makeText(getApplicationContext(),"Reach",Toast.LENGTH_LONG);
                 prev.setVisibility(View.VISIBLE);
-                uploaded_images_adapter myAdapter=new uploaded_images_adapter(getApplicationContext(),R.layout.uploaded_images,picuris);
+                previousadopter myAdapter=new previousadopter(getApplicationContext(),R.layout.uploaded_images,picuris);
                 simpleList.setAdapter(myAdapter);
                 simpleList.setExpanded(true);
 
