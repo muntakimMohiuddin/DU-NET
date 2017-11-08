@@ -51,17 +51,7 @@ public class uploaded_images_adapter extends ArrayAdapter{
         v = inflater.inflate(R.layout.uploaded_images, null);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
         MainActivity.setImageFromStorageNonCircle(getContext(),"POSTimages/"+studentList.get(position)+".jpg",imageView);
-        // imageView.setImageResource(birdList.get(position).getbirdImage());
-        /*StorageReference storageRef;// = FirebaseStorage.getInstance().getReference();
-        StorageReference forestRef;
 
-        storageRef = FirebaseStorage.getInstance().getReference();
-        forestRef = storageRef.child("images/"+studentList.get(position)+".jpg");
-        Glide.with(getContext()).using(new FirebaseImageLoader())
-                .load(forestRef)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .into(imageView);
-        return v;*/
         return v;
     }
 }
