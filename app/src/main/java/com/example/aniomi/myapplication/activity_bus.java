@@ -23,6 +23,7 @@ import java.util.Date;
 public class activity_bus extends AppCompatActivity {
 
         static routTime selection;
+        // TEST
         EditText startE,endE,busE,udE;
         Button searchRoute,searchBus,trackBus;
         TextView infoT,timeT;
