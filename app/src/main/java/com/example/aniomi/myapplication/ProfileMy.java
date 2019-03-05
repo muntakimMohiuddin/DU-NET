@@ -25,6 +25,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 
+import static com.example.aniomi.myapplication.Group_details.getContext;
+
 
 /**
  * A simple {@link Fragment} subclass.

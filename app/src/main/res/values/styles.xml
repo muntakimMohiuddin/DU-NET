@@ -20,13 +20,13 @@
     <style name="AppTheme.CustomThem">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
-        <item name="@android:style/Theme.NoTitleBar">true</item>
+        <!--<item name="@android:style/Theme.NoTitleBar">true</item>-->
     </style>
 
 
     <style name="NewTheme" parent="AppTheme.CustomThem" />
 
-    <style name="AppTheme_Dark_Dialog"></style>
+    <!--<style name="AppTheme_Dark_Dialog"></style>-->
 
 
 </resources>
